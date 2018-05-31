@@ -15,31 +15,26 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 
-public class Intro {
+public class MainWindow {
 
-	private JFrame frame;
+	JFrame frame;
+	private JFrame NSHEFrame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Intro window = new Intro();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
 	 */
-	public Intro() {
+	public MainWindow() {
 		initialize();
 	}
 
@@ -52,30 +47,58 @@ public class Intro {
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
+		
+		//for the label at the top
 		JLabel lblStateTheIssue = new JLabel("State The Issue");
 		lblStateTheIssue.setFont(new Font("Tahoma", Font.BOLD, 44));
 		
+		
+		//the text area that the user will type into
 		JTextArea textArea = new JTextArea();
 		textArea.setRows(100);
 		textArea.setColumns(100);
 		
+		
+		
+		
+		//button for NSHE reset, need to code into next window
 		JButton btnNSHEReset = new JButton("NSHE Reset");
-		btnNSHEReset.setBackground(new Color(240, 240, 240));
-		btnNSHEReset.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnNSHEReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNSHEReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				
+				NSHEResetWindow reset = new NSHEResetWindow();
+				
+				
+				
 			}
 		});
+		btnNSHEReset.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
+		
+		
+		//button for NetID resets, need to code into next window
 		JButton btnNetidReset = new JButton("NetID Reset\r\n");
 		btnNetidReset.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnNetidReset.setBackground(SystemColor.menu);
 		
+		
+		
+		
+		//button for can't login, need to code into next window
 		JButton btnBadLogin = new JButton("Can't Login?");
 		btnBadLogin.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		
+		
+		
+		//button for continue
 		JButton btnContinue = new JButton("Continue\r\n");
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		
+		
+		
+		//layout settings
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -94,6 +117,7 @@ public class Intro {
 							.addComponent(btnContinue, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		//more layout settings
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
