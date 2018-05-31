@@ -1,21 +1,20 @@
 package testing;
 
 import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Desktop;
 
 import java.awt.datatransfer.*;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class NSHEResetWindow {
 
@@ -23,10 +22,12 @@ public class NSHEResetWindow {
 	private JTextField textField_NSHE;
 	private JTextField textField_DOB;
 	private JTextField textField_SSN;
+	private JButton btn_Copy;
+	
 	private String NSHE_ID;
 	private String DOB;
 	private String SSN;
-	private JButton btn_Copy;
+
 
 	/**
 	 * Launch the application.
@@ -136,6 +137,26 @@ public class NSHEResetWindow {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					
+					
+					URI supportCenterLink = null;
+					try {
+						supportCenterLink = new URI("https://unroit.slack.com/messages/G7ZN15H16/");
+					} catch (URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					
+					try {
+						desktop.browse(supportCenterLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+				
 			}
 		});
 		btnToSupportcenter.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -145,9 +166,36 @@ public class NSHEResetWindow {
 		
 		
 		JButton btnToUserservices = new JButton("To userservices");
+		btnToUserservices.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					
+					
+					URI supportCenterLink = null;
+					try {
+						supportCenterLink = new URI("https://unroit.slack.com/messages/G809PKR5H/");
+					} catch (URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					
+					try {
+						desktop.browse(supportCenterLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		btnToUserservices.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnToUserservices.setBounds(546, 396, 230, 78);
 		frame.getContentPane().add(btnToUserservices);
+		
 		
 		
 		
