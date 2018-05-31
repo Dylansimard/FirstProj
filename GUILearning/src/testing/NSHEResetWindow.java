@@ -165,6 +165,7 @@ public class NSHEResetWindow {
 		
 		
 		
+		//take this off, replace with a return to main menu button instead.
 		JButton btnToUserservices = new JButton("To userservices");
 		btnToUserservices.addMouseListener(new MouseAdapter() {
 			@Override
