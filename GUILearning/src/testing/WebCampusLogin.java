@@ -6,12 +6,29 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class WebCampusLogin {
 	
 	private JFrame frame;
+	
+	private JCheckBox chckbxWindows;
+	private JCheckBox chckbxMac;
+	
+	private JCheckBox chckbxSafari;
+	private JCheckBox chckbxChrome;
+	private JCheckBox chckbxFirefox;
+	
+	private boolean isWindowsChecked = false;
+	private boolean isMacChecked = false;
+	
+	private boolean isSafariChecked = false;
+	private boolean isChromeChecked = false;
+	private boolean isFirefoxChecked = false;
 	
 	WebCampusLogin(){
 		initialize();
@@ -21,8 +38,12 @@ public class WebCampusLogin {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 802, 539);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		
+		//labels:
 		
 		JLabel lblNewLabel = new JLabel("WebCampus can only be logged onto with netID");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
@@ -50,42 +71,159 @@ public class WebCampusLogin {
 		frame.getContentPane().add(lblForInstructionsGet);
 		
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Windows");
-		chckbxNewCheckBox.addKeyListener(new KeyAdapter() {
+		
+		//initializing checkboxes
+		JCheckBox chckbxWindows = new JCheckBox("Windows");
+		JCheckBox chckbxMac = new JCheckBox("Mac");	
+		JCheckBox chckbxSafari = new JCheckBox("Safari");
+		JCheckBox chckbxChrome = new JCheckBox("Chrome");
+		JCheckBox chckbxFirefox = new JCheckBox("Firefox");
+		
+		
+		
+		//action on check, goes through steps to make sure only mac or windows is checked
+		//will uncheck other if attempt to check both
+		chckbxWindows.addActionListener(new ActionListener() {
+
 			@Override
-			public void keyPressed(KeyEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				if(isWindowsChecked) {
+					isWindowsChecked = false;
+				}
+				else {
+					isWindowsChecked = true;
+				}
 				
+				
+				if(isMacChecked) {
+					isMacChecked = false;
+					chckbxMac.setSelected(false);
+					System.out.println("test");
+				}
 			}
 		});
-		
-		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxNewCheckBox.setBounds(30, 209, 114, 37);
-		frame.getContentPane().add(chckbxNewCheckBox);
-		
+		chckbxWindows.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		chckbxWindows.setBounds(30, 209, 114, 37);
+		frame.getContentPane().add(chckbxWindows);
 		
 		
-		JCheckBox chckbxMac = new JCheckBox("Mac");
+		//action on check, goes through steps to make sure only mac or windows is checked
+		//will uncheck other if attempt to check both		
+		chckbxMac.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isMacChecked) {
+					isMacChecked = false;
+				}
+				else {
+					isMacChecked = true;
+				}
+				
+				if(isWindowsChecked) {
+					isWindowsChecked = false;
+					chckbxWindows.setSelected(false);
+				}
+			}
+		});
 		chckbxMac.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxMac.setBounds(168, 209, 114, 37);
 		frame.getContentPane().add(chckbxMac);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Safari");
-		chckbxNewCheckBox_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		chckbxNewCheckBox_1.setBounds(96, 259, 114, 37);
-		frame.getContentPane().add(chckbxNewCheckBox_1);
 		
-		JCheckBox chckbxChrome = new JCheckBox("Chrome");
+		
+		//active listener for Safari checkbox
+		//makes sure only one box can be checked
+		chckbxSafari.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isSafariChecked) {
+					isSafariChecked = false;
+				}
+				else {
+					isSafariChecked = true;
+				
+					if(isChromeChecked) {
+						chckbxChrome.setSelected(false);
+						isChromeChecked = false;
+					}
+					
+					if(isFirefoxChecked) {
+						chckbxFirefox.setSelected(false);
+						isFirefoxChecked = false;
+					}
+				}
+			}
+			
+		});
+		chckbxSafari.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		chckbxSafari.setBounds(96, 259, 114, 37);
+		frame.getContentPane().add(chckbxSafari);
+		
+		
+		
+		//active listener for Chrome checkbox
+		//makes sure only one box can be checked
+		chckbxChrome.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isChromeChecked) {
+					isChromeChecked = false;
+				}
+				else {
+					isChromeChecked = true;
+					
+					if(isSafariChecked) {
+						chckbxSafari.setSelected(false);
+						isSafariChecked = false;
+					}
+					
+					if(isFirefoxChecked) {
+						chckbxFirefox.setSelected(false);
+						isFirefoxChecked = false;
+					}
+				}
+				
+			}
+			
+		});
 		chckbxChrome.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxChrome.setBounds(96, 313, 114, 37);
 		frame.getContentPane().add(chckbxChrome);
 		
-		JCheckBox chckbxFirefox = new JCheckBox("Firefox");
+		
+		//active listener for Firefox checkbox
+		//makes sure only one box can be checked
+		chckbxFirefox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(isFirefoxChecked) {
+					isFirefoxChecked = false;
+				}
+				else {
+					isFirefoxChecked = true;
+			
+					if(isSafariChecked) {
+						chckbxSafari.setSelected(false);
+						isSafariChecked = false;
+					}
+					
+					if(isChromeChecked) {
+						chckbxChrome.setSelected(false);
+						isChromeChecked = false;
+					}
+				}
+				
+			}
+			
+		});
 		chckbxFirefox.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		chckbxFirefox.setBounds(96, 366, 114, 37);
 		frame.getContentPane().add(chckbxFirefox);
 		
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+
 	}
 }
