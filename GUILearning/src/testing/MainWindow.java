@@ -38,6 +38,7 @@ public class MainWindow {
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		
 		
@@ -73,6 +74,14 @@ public class MainWindow {
 		
 		//button for NetID resets, need to code into next window
 		JButton btnNetidReset = new JButton("NetID Reset\r\n");
+		btnNetidReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				
+				NetIDResetWindow reset = new NetIDResetWindow();
+			}
+		});
 		btnNetidReset.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		
@@ -80,6 +89,14 @@ public class MainWindow {
 		
 		//button for can't login, need to code into next window
 		JButton btnBadLogin = new JButton("Can't Login?");
+		btnBadLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				
+				BadLoginWindow badLogin = new BadLoginWindow();
+			}
+		});
 		btnBadLogin.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		
 		

@@ -49,6 +49,10 @@ public class NSHEResetWindow {
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
 		
+		frame.setBounds(100, 100, 802, 539);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		
 		
 		
 		//the header
@@ -108,7 +112,7 @@ public class NSHEResetWindow {
 		frame.getContentPane().add(textField_SSN);
 		
 		
-		
+		//initializing the copy button and setting mouseclick to copy to clipboard
 		btn_Copy = new JButton("Copy");
 		btn_Copy.addMouseListener(new MouseAdapter() {
 			@Override
@@ -125,13 +129,14 @@ public class NSHEResetWindow {
 			}
 		});
 		
-		
+		//setting the properties of the copy button
 		btn_Copy.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		btn_Copy.setBounds(10, 396, 230, 78);
 		frame.getContentPane().add(btn_Copy);
 		
 		
-		
+		//button to go to the supportcenter slack channel
+		//verifies that desktop is able to connect and browser is supported, then goes to link in default browser
 		JButton btnToSupportcenter = new JButton("To supportcenter");
 		btnToSupportcenter.addMouseListener(new MouseAdapter() {
 			@Override
@@ -159,49 +164,28 @@ public class NSHEResetWindow {
 				
 			}
 		});
+		
+		//setting properties of button to support center
 		btnToSupportcenter.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnToSupportcenter.setBounds(279, 396, 230, 78);
 		frame.getContentPane().add(btnToSupportcenter);
 		
 		
 		
-		//take this off, replace with a return to main menu button instead.
-		JButton btnToUserservices = new JButton("To userservices");
+		//button to reset to the main menu
+		JButton btnToUserservices = new JButton("Main Menu");
 		btnToUserservices.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-				
-				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-					
-					
-					URI supportCenterLink = null;
-					try {
-						supportCenterLink = new URI("https://unroit.slack.com/messages/G809PKR5H/");
-					} catch (URISyntaxException e1) {
-						e1.printStackTrace();
-					}
-					
-					try {
-						desktop.browse(supportCenterLink);
-					}
-					catch(Exception ex) {
-						ex.printStackTrace();
-					}
-				}
-				
+				frame.dispose();
+				MainWindow newWindow = new MainWindow();
 			}
 		});
+		
+		//setting properties of return to main menu button
 		btnToUserservices.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnToUserservices.setBounds(546, 396, 230, 78);
 		frame.getContentPane().add(btnToUserservices);
 		
-		
-		
-		
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
 	}
 }
