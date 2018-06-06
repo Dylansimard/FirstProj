@@ -231,17 +231,24 @@ public class WebCampusLogin {
 		frame.getContentPane().add(chckbxFirefox);
 		
 		
+		//label declarations, needed to define up here to avoid error
 		JLabel lblMacFirefox = new JLabel("Cmd-Shift-p");
 		JLabel lblMacChrome = new JLabel("Cmd-Shift-n");
 		JLabel lblMacSafari = new JLabel("Cmd-Shift-n");
 		JLabel labelWindowsFirefox = new JLabel("Ctrl-Shift-p");
 		JLabel lblWindowsChrome = new JLabel("Ctrl-Shift-n");
 		JLabel lblWrong = new JLabel("Please select two valid options");
+		JLabel lblKeyCommand = new JLabel("Keyboard Command is:");
 		
+		
+		//action for continue button, makes keyboard command for private window visible
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
+				lblKeyCommand.setVisible(true);
+				
 				if(isWindowsChecked && isChromeChecked) {
 					lblWindowsChrome.setVisible(true);
 					lblWrong.setVisible(false);
@@ -293,6 +300,8 @@ public class WebCampusLogin {
 			}
 		});
 
+		
+		//all label effects
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnContinue.setBounds(30, 432, 252, 57);
 		frame.getContentPane().add(btnContinue);
@@ -331,9 +340,16 @@ public class WebCampusLogin {
 		lblWindowsChrome.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		lblWindowsChrome.setBounds(450, 259, 260, 144);
 		frame.getContentPane().add(lblWindowsChrome);
+		lblWindowsChrome.setVisible(false);
 		
 		
+		lblKeyCommand.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblKeyCommand.setBounds(422, 209, 331, 37);
+		frame.getContentPane().add(lblKeyCommand);
+		lblKeyCommand.setVisible(false);
 		
+		
+		//button to link to the NetID reset page.
 		JButton btnNewButton = new JButton("Reset NetID Password\r\n");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -345,7 +361,8 @@ public class WebCampusLogin {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		btnNewButton.setBounds(399, 432, 354, 57);
 		frame.getContentPane().add(btnNewButton);
-		lblWindowsChrome.setVisible(false);
+		
+
 
 	}
 }
