@@ -173,6 +173,11 @@ public class BadLoginWindow {
 		btnToMainMenu.setBounds(546, 396, 230, 78);
 		frame.getContentPane().add(btnToMainMenu);
 		
+		JButton btnNewButton = new JButton("Multiple things");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton.setBounds(280, 375, 207, 103);
+		frame.getContentPane().add(btnNewButton);
+		
 	}
 
 }
