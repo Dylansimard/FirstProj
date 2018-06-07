@@ -173,8 +173,8 @@ public class NSHEResetWindow {
 		
 		
 		//button to reset to the main menu
-		JButton btnToUserservices = new JButton("Main Menu");
-		btnToUserservices.addMouseListener(new MouseAdapter() {
+		JButton btnToMainMenu = new JButton("Main Menu");
+		btnToMainMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
@@ -183,9 +183,9 @@ public class NSHEResetWindow {
 		});
 		
 		//setting properties of return to main menu button
-		btnToUserservices.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnToUserservices.setBounds(546, 396, 230, 78);
-		frame.getContentPane().add(btnToUserservices);
+		btnToMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnToMainMenu.setBounds(546, 396, 230, 78);
+		frame.getContentPane().add(btnToMainMenu);
 		
 	}
 }

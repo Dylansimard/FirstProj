@@ -16,7 +16,7 @@ import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class WebCampusLogin {
+public class WebCampusBadLogin {
 	
 	private JFrame frame;
 	
@@ -34,7 +34,7 @@ public class WebCampusLogin {
 	private boolean isChromeChecked = false;
 	private boolean isFirefoxChecked = false;
 	
-	WebCampusLogin(){
+	WebCampusBadLogin(){
 		initialize();
 	}
 	
@@ -49,7 +49,7 @@ public class WebCampusLogin {
 		
 		//labels:
 		
-		JLabel lblNewLabel = new JLabel("WebCampus can only be logged onto with netID");
+		JLabel lblNewLabel = new JLabel("WebCampus can only be logged onto with NetID");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		lblNewLabel.setBounds(10, 11, 766, 50);
 		frame.getContentPane().add(lblNewLabel);
@@ -83,6 +83,11 @@ public class WebCampusLogin {
 		JCheckBox chckbxChrome = new JCheckBox("Chrome");
 		JCheckBox chckbxFirefox = new JCheckBox("Firefox");
 		
+		//label
+		JLabel lblShortcutMessage = new JLabel("");
+		JLabel lblKeyCommand = new JLabel("Keyboard Command is:");
+		JLabel lblError = new JLabel("Please select two valid options");
+		
 		
 		
 		//action on check, goes through steps to make sure only mac or windows is checked
@@ -95,7 +100,12 @@ public class WebCampusLogin {
 					isWindowsChecked = false;
 				}
 				else {
-					isWindowsChecked = true;
+					if(isSafariChecked) {
+						chckbxWindows.setSelected(false);
+					}
+					else {
+						isWindowsChecked = true;
+					}
 				}
 				
 				
@@ -231,116 +241,50 @@ public class WebCampusLogin {
 		frame.getContentPane().add(chckbxFirefox);
 		
 		
-		//label declarations, needed to define up here to avoid error
-		JLabel lblMacFirefox = new JLabel("Cmd-Shift-p");
-		JLabel lblMacChrome = new JLabel("Cmd-Shift-n");
-		JLabel lblMacSafari = new JLabel("Cmd-Shift-n");
-		JLabel labelWindowsFirefox = new JLabel("Ctrl-Shift-p");
-		JLabel lblWindowsChrome = new JLabel("Ctrl-Shift-n");
-		JLabel lblWrong = new JLabel("Please select two valid options");
-		JLabel lblKeyCommand = new JLabel("Keyboard Command is:");
 		
-		
-		//action for continue button, makes keyboard command for private window visible
-		JButton btnContinue = new JButton("Continue");
-		btnContinue.addMouseListener(new MouseAdapter() {
+		//action for shortcut button, makes keyboard command for private window visible
+		JButton btnShortcut = new JButton("Shortcut");
+		btnShortcut.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
-				lblKeyCommand.setVisible(true);
-				
 				if(isWindowsChecked && isChromeChecked) {
-					lblWindowsChrome.setVisible(true);
-					lblWrong.setVisible(false);
-					lblMacFirefox.setVisible(false);
-					lblMacChrome.setVisible(false);
-					lblMacSafari.setVisible(false);
-					labelWindowsFirefox.setVisible(false);
+					lblShortcutMessage.setText("Ctrl-Shift-n");
+					lblKeyCommand.setVisible(true);
+					lblError.setVisible(false);
 				}
 				else if(isWindowsChecked && isFirefoxChecked) {
-					labelWindowsFirefox.setVisible(true);
-					lblWrong.setVisible(false);
-					lblMacFirefox.setVisible(false);
-					lblMacChrome.setVisible(false);
-					lblMacSafari.setVisible(false);
-					lblWindowsChrome.setVisible(false);
+					lblShortcutMessage.setText("Ctrl-Shift-p");
+					lblKeyCommand.setVisible(true);
+					lblError.setVisible(false);
 				}
 				else if(isMacChecked && isSafariChecked) {
-					lblMacSafari.setVisible(true);
-					lblWrong.setVisible(false);
-					lblMacFirefox.setVisible(false);
-					lblMacChrome.setVisible(false);
-					labelWindowsFirefox.setVisible(false);
-					lblWindowsChrome.setVisible(false);
+					lblShortcutMessage.setText("Cmd-Shift-n");
+					lblKeyCommand.setVisible(true);
+					lblError.setVisible(false);
 				}
 				else if(isMacChecked && isChromeChecked) {
-					lblMacChrome.setVisible(true);
-					lblWrong.setVisible(false);
-					lblMacFirefox.setVisible(false);
-					lblMacSafari.setVisible(false);
-					labelWindowsFirefox.setVisible(false);
-					lblWindowsChrome.setVisible(false);
+					lblShortcutMessage.setText("Cmd-Shift-n");
+					lblKeyCommand.setVisible(true);
+					lblError.setVisible(false);
 				}
 				else if(isMacChecked && isFirefoxChecked) {
-					lblMacFirefox.setVisible(true);
-					lblWrong.setVisible(false);
-					lblMacChrome.setVisible(false);
-					lblMacSafari.setVisible(false);
-					labelWindowsFirefox.setVisible(false);
-					lblWindowsChrome.setVisible(false);
+					lblShortcutMessage.setText("Cmd-Shift-p");
+					lblKeyCommand.setVisible(true);
+					lblError.setVisible(false);
 				}
 				else {
-					lblWrong.setVisible(true);
-					lblMacFirefox.setVisible(false);
-					lblMacChrome.setVisible(false);
-					lblMacSafari.setVisible(false);
-					labelWindowsFirefox.setVisible(false);
-					lblWindowsChrome.setVisible(false);
+					lblShortcutMessage.setText("");
+					lblKeyCommand.setVisible(false);
+					lblError.setVisible(true);
 				}
 			}
 		});
 
 		
 		//all label effects
-		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnContinue.setBounds(30, 432, 252, 57);
-		frame.getContentPane().add(btnContinue);
-		
-		
-		lblWrong.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblWrong.setBounds(410, 259, 350, 144);
-		frame.getContentPane().add(lblWrong);
-		lblWrong.setVisible(false);
-		
-		
-		lblMacFirefox.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblMacFirefox.setBounds(459, 259, 269, 144);
-		frame.getContentPane().add(lblMacFirefox);
-		lblMacFirefox.setVisible(false);
-		
-		
-		lblMacChrome.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblMacChrome.setBounds(482, 259, 271, 144);
-		frame.getContentPane().add(lblMacChrome);
-		lblMacChrome.setVisible(false);
-		
-		
-		lblMacSafari.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblMacSafari.setBounds(447, 259, 274, 144);
-		frame.getContentPane().add(lblMacSafari);
-		lblMacSafari.setVisible(false);
-		
-		
-		labelWindowsFirefox.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		labelWindowsFirefox.setBounds(460, 259, 260, 144);
-		frame.getContentPane().add(labelWindowsFirefox);
-		labelWindowsFirefox.setVisible(false);
-		
-		
-		lblWindowsChrome.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblWindowsChrome.setBounds(450, 259, 260, 144);
-		frame.getContentPane().add(lblWindowsChrome);
-		lblWindowsChrome.setVisible(false);
+		btnShortcut.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		btnShortcut.setBounds(30, 432, 209, 57);
+		frame.getContentPane().add(btnShortcut);
 		
 		
 		lblKeyCommand.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -358,11 +302,37 @@ public class WebCampusLogin {
 				NetIDResetWindow netIDReset = new NetIDResetWindow();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		btnNewButton.setBounds(399, 432, 354, 57);
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnNewButton.setBounds(260, 432, 282, 57);
 		frame.getContentPane().add(btnNewButton);
 		
-
-
+		
+		lblShortcutMessage.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblShortcutMessage.setBounds(422, 259, 331, 65);
+		frame.getContentPane().add(lblShortcutMessage);
+		
+		
+		
+		JButton btnToMainMenu = new JButton("Main Menu");
+		btnToMainMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				MainWindow newWindow = new MainWindow();
+			}
+		});
+		
+		//setting properties of return to main menu button
+		btnToMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnToMainMenu.setBounds(567, 432, 209, 57);
+		frame.getContentPane().add(btnToMainMenu);
+		
+		
+		lblError.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblError.setBounds(387, 259, 366, 65);
+		frame.getContentPane().add(lblError);
+		lblError.setVisible(false);
+		
 	}
+
 }

@@ -45,7 +45,7 @@ public class BadLoginWindow {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				frame.dispose();
-				WebCampusLogin webCampusRedirect = new WebCampusLogin();
+				WebCampusBadLogin webCampusRedirect = new WebCampusBadLogin();
 			}
 		});
 		btnWebCampus.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -53,11 +53,21 @@ public class BadLoginWindow {
 		frame.getContentPane().add(btnWebCampus);
 		
 		
+		
 		//myNevada login
 		JButton btnMynevada = new JButton("MyNevada");
+		btnMynevada.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				
+				MyNevadaBadLoginInit MyNevadaLogin = new MyNevadaBadLoginInit();
+			}			
+		});
 		btnMynevada.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMynevada.setBounds(20, 147, 180, 46);
 		frame.getContentPane().add(btnMynevada);
+		
 		
 		
 		//housing login
@@ -149,6 +159,21 @@ public class BadLoginWindow {
 		frame.getContentPane().add(btnTranscriptRequests);
 		
 		
-
+		JButton btnToMainMenu = new JButton("Main Menu");
+		btnToMainMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				MainWindow newWindow = new MainWindow();
+			}
+		});
+		
+		//setting properties of return to main menu button
+		btnToMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnToMainMenu.setBounds(546, 396, 230, 78);
+		frame.getContentPane().add(btnToMainMenu);
+		
 	}
+
 }
+
