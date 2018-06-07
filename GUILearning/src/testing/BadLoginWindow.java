@@ -74,6 +74,8 @@ public class BadLoginWindow {
 		JButton btnHousing = new JButton("Housing");
 		btnHousing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				HousingLogin redirect = new HousingLogin();
 			}
 		});
 		btnHousing.setFont(new Font("Tahoma", Font.PLAIN, 20));
