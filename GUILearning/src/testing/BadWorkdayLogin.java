@@ -13,7 +13,7 @@ public class BadWorkdayLogin {
 		initialize();
 	}
 	
-	void initialize() {
+	void initialize() { 
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
