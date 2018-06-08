@@ -14,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 public class HousingLogin {
 	
@@ -29,7 +28,7 @@ public class HousingLogin {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
-		frame.setBounds(100, 100, 802, 539);
+		frame.setBounds(100, 100, 943, 685);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	
@@ -88,13 +87,40 @@ public class HousingLogin {
 		
 		
 		Icon Picture1 = new ImageIcon("lib/housing1.png");
+		Icon Picture2 = new ImageIcon("lib/housing2.png");
 		
 		
 		JLabel lblPicture1 = new JLabel("New label");
-		lblPicture1.setBounds(30, 263, 267, 226);
+		lblPicture1.setBounds(47, 319, 308, 324);
 		frame.getContentPane().add(lblPicture1);
-		
 		lblPicture1.setIcon(Picture1);
+		
+		JLabel lblNewLabel_2 = new JLabel("New Students");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(129, 264, 130, 44);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblReturningStudents = new JLabel("Returning Students");
+		lblReturningStudents.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblReturningStudents.setBounds(531, 264, 170, 44);
+		frame.getContentPane().add(lblReturningStudents);
+		
+		JLabel lblPicture2 = new JLabel("New label");
+		lblPicture2.setIcon(Picture2);
+		lblPicture2.setBounds(480, 311, 296, 115);
+		frame.getContentPane().add(lblPicture2);
+		
+		JButton btnNewButton = new JButton("Main Menu");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				MainWindow redirect = new MainWindow();
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButton.setBounds(711, 591, 206, 44);
+		frame.getContentPane().add(btnNewButton);
 
 
 	}

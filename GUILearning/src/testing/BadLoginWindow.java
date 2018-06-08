@@ -60,7 +60,6 @@ public class BadLoginWindow {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				frame.dispose();
-				
 				MyNevadaBadLoginInit MyNevadaLogin = new MyNevadaBadLoginInit();
 			}			
 		});
@@ -87,6 +86,8 @@ public class BadLoginWindow {
 		JButton btnFitness = new JButton("Fitness");
 		btnFitness.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadFitnessLogin redirect = new BadFitnessLogin();
 			}
 		});
 		btnFitness.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -96,6 +97,12 @@ public class BadLoginWindow {
 		
 		//Student email login
 		JButton btnStudentEmail = new JButton("Student Email");
+		btnStudentEmail.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadStudentEmailLogin redirect = new BadStudentEmailLogin();
+			}
+		});
 		btnStudentEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStudentEmail.setBounds(20, 318, 180, 46);
 		frame.getContentPane().add(btnStudentEmail);
@@ -105,6 +112,8 @@ public class BadLoginWindow {
 		JButton btnEmployeeEmail = new JButton("Employee Email");
 		btnEmployeeEmail.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadEmployeeEmailLogin redirect = new BadEmployeeEmailLogin();
 			}
 		});
 		btnEmployeeEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -116,6 +125,8 @@ public class BadLoginWindow {
 		JButton btnBoxunredu = new JButton("Box.unr.edu");
 		btnBoxunredu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadBoxLogin redirect = new BadBoxLogin();
 			}
 		});
 		btnBoxunredu.setFont(new Font("Tahoma", Font.PLAIN, 20));

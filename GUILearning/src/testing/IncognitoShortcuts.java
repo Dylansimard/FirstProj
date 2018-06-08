@@ -1,20 +1,18 @@
 package testing;
 
 import java.awt.Color;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JCheckBox;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class WebCampusBadLogin {
-	
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class IncognitoShortcuts {
 	private JFrame frame;
 	
 	private JCheckBox chckbxWindows;
@@ -31,9 +29,7 @@ public class WebCampusBadLogin {
 	private boolean isChromeChecked = false;
 	private boolean isFirefoxChecked = false;
 	
-
-	
-	WebCampusBadLogin(){
+	IncognitoShortcuts(){
 		initialize();
 	}
 	
@@ -44,34 +40,6 @@ public class WebCampusBadLogin {
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
-		
-		//labels:
-		
-		JLabel lblNewLabel = new JLabel("WebCampus can only be logged onto with NetID");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewLabel.setBounds(10, 11, 766, 50);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("1.) Verify user has an active NetID in the security tool");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(20, 72, 331, 32);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblVerifyUsers = new JLabel("2.) Verify user's password hasn't expired");
-		lblVerifyUsers.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblVerifyUsers.setBounds(20, 104, 331, 32);
-		frame.getContentPane().add(lblVerifyUsers);
-		
-		JLabel lblIfBothAre = new JLabel("If both are true, and user is confident they know their password, try in a private window");
-		lblIfBothAre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblIfBothAre.setBounds(20, 140, 549, 32);
-		frame.getContentPane().add(lblIfBothAre);
-		
-		JLabel lblForInstructionsGet = new JLabel("For instructions, get OS and Browser");
-		lblForInstructionsGet.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblForInstructionsGet.setBounds(20, 170, 290, 32);
-		frame.getContentPane().add(lblForInstructionsGet);
 		
 		
 		
@@ -292,20 +260,6 @@ public class WebCampusBadLogin {
 		lblKeyCommand.setVisible(false);
 		
 		
-		//button to link to the NetID reset page.
-		JButton btnNewButton = new JButton("Reset NetID Password\r\n");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-				NetIDResetWindow netIDReset = new NetIDResetWindow();
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButton.setBounds(260, 432, 282, 57);
-		frame.getContentPane().add(btnNewButton);
-		
-		
 		lblShortcutMessage.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblShortcutMessage.setBounds(422, 259, 331, 65);
 		frame.getContentPane().add(lblShortcutMessage);
@@ -313,6 +267,10 @@ public class WebCampusBadLogin {
 		
 		
 		JButton btnToMainMenu = new JButton("Main Menu");
+		btnToMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnToMainMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -330,7 +288,40 @@ public class WebCampusBadLogin {
 		lblError.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblError.setBounds(387, 259, 366, 65);
 		frame.getContentPane().add(lblError);
+		
+		JLabel lblNewLabel = new JLabel("Keyboard shortcuts for incognito windows");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblNewLabel.setBounds(30, 130, 746, 57);
+		frame.getContentPane().add(lblNewLabel);
+		
+		
+		
+		JButton btnNetIDReset = new JButton("NetID password reset");
+		btnNetIDReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				NetIDResetWindow redirect = new NetIDResetWindow();
+			}
+		});
+		btnNetIDReset.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNetIDReset.setBounds(10, 11, 284, 108);
+		frame.getContentPane().add(btnNetIDReset);
+		
+		
+		
+		JButton btnNSHEIDReset = new JButton("NSHE ID password reset");
+		btnNSHEIDReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				NSHEResetWindow redirect = new NSHEResetWindow();
+			}
+		});
+		btnNSHEIDReset.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNSHEIDReset.setBounds(469, 11, 284, 108);
+		frame.getContentPane().add(btnNSHEIDReset);
 		lblError.setVisible(false);
+		
 	}
-
 }

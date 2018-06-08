@@ -2,20 +2,19 @@ package testing;
 
 import java.awt.Color;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JCheckBox;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class WebCampusBadLogin {
-	
+public class BadFitnessLogin {
 	private JFrame frame;
+	
 	
 	private JCheckBox chckbxWindows;
 	private JCheckBox chckbxMac;
@@ -31,9 +30,8 @@ public class WebCampusBadLogin {
 	private boolean isChromeChecked = false;
 	private boolean isFirefoxChecked = false;
 	
-
 	
-	WebCampusBadLogin(){
+	BadFitnessLogin(){
 		initialize();
 	}
 	
@@ -45,27 +43,32 @@ public class WebCampusBadLogin {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
-		
-		//labels:
-		
-		JLabel lblNewLabel = new JLabel("WebCampus can only be logged onto with NetID");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewLabel.setBounds(10, 11, 766, 50);
+		JLabel lblNewLabel = new JLabel("Fitness.unr.edu is a NetID logon");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 38));
+		lblNewLabel.setBounds(10, 0, 766, 46);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel1 = new JLabel("However there is a local account there for employees, if user is calling regarding that, ask one of the pros for assistance");
+		lblNewLabel1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel1.setBounds(20, 46, 756, 30);
+		frame.getContentPane().add(lblNewLabel1);
+		
+
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("1.) Verify user has an active NetID in the security tool");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(20, 72, 331, 32);
+		lblNewLabel_1.setBounds(30, 77, 331, 32);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblVerifyUsers = new JLabel("2.) Verify user's password hasn't expired");
 		lblVerifyUsers.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblVerifyUsers.setBounds(20, 104, 331, 32);
+		lblVerifyUsers.setBounds(30, 104, 331, 32);
 		frame.getContentPane().add(lblVerifyUsers);
 		
 		JLabel lblIfBothAre = new JLabel("If both are true, and user is confident they know their password, try in a private window");
 		lblIfBothAre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblIfBothAre.setBounds(20, 140, 549, 32);
+		lblIfBothAre.setBounds(10, 135, 549, 32);
 		frame.getContentPane().add(lblIfBothAre);
 		
 		JLabel lblForInstructionsGet = new JLabel("For instructions, get OS and Browser");
@@ -332,5 +335,4 @@ public class WebCampusBadLogin {
 		frame.getContentPane().add(lblError);
 		lblError.setVisible(false);
 	}
-
 }
