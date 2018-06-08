@@ -137,6 +137,15 @@ public class BadLoginWindow {
 		//campus computer login
 		JButton btnCampusComputer = new JButton("Campus Computer");
 		btnCampusComputer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				CampusComputerLogin redirect = new CampusComputerLogin();
+			}
+			
+		});
+		btnCampusComputer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -147,6 +156,16 @@ public class BadLoginWindow {
 		
 		//workday login
 		JButton btnWorkday = new JButton("Workday\r\n\r\n");
+		btnWorkday.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadWorkdayLogin redirect = new BadWorkdayLogin();
+				
+			}
+			
+		});
 		btnWorkday.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnWorkday.setBounds(280, 147, 207, 46);
 		frame.getContentPane().add(btnWorkday);
