@@ -53,10 +53,12 @@ public class BadRemoteDesktopLogin {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				textPane.setText("On a Windows machine, the user must go to \"remote.unr.edu\", they'll need to sign in, download the file, and then run it. When running it, they will need to enter their NetID" + 
-				" in the form \"UNR\\NetID\" and then fill in the password");
+				
 				btnToWindowsWebsite.setVisible(true);
 				btnToMacWebsite.setVisible(false);
+				textPane.setText("");
+				textPane.setText("On a Windows machine, the user must go to \"remote.unr.edu\", they'll need to sign in, download the file, and then run it. When running it, they will need to enter their NetID" + 
+				" in the form \"UNR\\NetID\" and then fill in the password");
 				
 				if(!chckbxWindows.isSelected()) {
 					textPane.setText("");
@@ -64,7 +66,6 @@ public class BadRemoteDesktopLogin {
 				}
 				else if(chckbxMac.isSelected()) {
 					chckbxMac.setSelected(false);
-					textPane.setText("");
 				}
 				else if(chckbxUniversity.isSelected()) {
 					chckbxUniversity.setSelected(false);
@@ -83,7 +84,8 @@ public class BadRemoteDesktopLogin {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				textPane.setText("On a mac, the user must download the Microsoft Remote Desktop app. It can be found in the app store, once downloaded"
+				textPane.setText("These instructions are for Microsoft Remote Desktop 8, not version 10\n\n"
+						+ "On a mac, the user must download the Microsoft Remote Desktop app. It can be found in the app store, once downloaded"
 						+ " they will need to click on Remote Resources in the top menu, they will need to enter the following credentials:"
 						+ "\n\nURL: https://remote.unr.edu/RDWeb/feed/webfeed.aspx"
 						+ "\nUser Name: Your NetID in the form of UNR\\NetID"
