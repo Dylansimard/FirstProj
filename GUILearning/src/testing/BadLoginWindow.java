@@ -187,6 +187,15 @@ public class BadLoginWindow {
 		
 		//wifi login
 		JButton btnWifi = new JButton("Wifi");
+		btnWifi.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				BadWifiLogin redirect = new BadWifiLogin();
+				
+			}
+			
+		});
 		btnWifi.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnWifi.setBounds(280, 261, 207, 46);
 		frame.getContentPane().add(btnWifi);
