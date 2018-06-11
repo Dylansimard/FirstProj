@@ -14,6 +14,8 @@ import java.net.URISyntaxException;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BadRemoteDesktopLogin {
 	
@@ -43,16 +45,18 @@ public class BadRemoteDesktopLogin {
 		JCheckBox chckbxUniversity = new JCheckBox("University");
 		JTextPane textPane = new JTextPane();
 		JButton btnToWindowsWebsite = new JButton("To Website Instructions");
+		JButton btnToMacWebsite = new JButton("To Website Instructions");
 		textPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		
 		chckbxWindows.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
 				textPane.setText("On a Windows machine, the user must go to \"remote.unr.edu\", they'll need to sign in, download the file, and then run it. When running it, they will need to enter their NetID" + 
 				" in the form \"UNR\\NetID\" and then fill in the password");
 				btnToWindowsWebsite.setVisible(true);
-			
+				btnToMacWebsite.setVisible(false);
 				
 				if(!chckbxWindows.isSelected()) {
 					textPane.setText("");
@@ -78,8 +82,20 @@ public class BadRemoteDesktopLogin {
 		chckbxMac.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				textPane.setText("On a mac, the user must download the Microsoft Remote Desktop app. It can be found in the app store, once downloaded"
+						+ " they will need to click on Remote Resources in the top menu, they will need to enter the following credentials:"
+						+ "\n\nURL: https://remote.unr.edu/RDWeb/feed/webfeed.aspx"
+						+ "\nUser Name: Your NetID in the form of UNR\\NetID"
+						+ "\nPassword: Your NetID password"
+						+ "\n\nThen hit the refresh button, their desktop should be there");
+				btnToMacWebsite.setVisible(true);
+				btnToWindowsWebsite.setVisible(false);
+				
 				if(!chckbxMac.isSelected()) {
 					btnToWindowsWebsite.setVisible(false);
+					btnToMacWebsite.setVisible(false);
+					textPane.setText("");
 				}
 				else if(chckbxWindows.isSelected()) {
 					chckbxWindows.setSelected(false);
@@ -95,15 +111,23 @@ public class BadRemoteDesktopLogin {
 		
 		
 		chckbxUniversity.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				textPane.setText("On a University machine (verify if windows still, if mac go to mac instructions), the user must go to \"remote.unr.edu\", they'll need to sign in, download the file, and then run it. When running it, they will need to enter their NetID" + 
+				" in the form \"UNR\\NetID\" and then fill in the password");
+				btnToWindowsWebsite.setVisible(true);
+				btnToMacWebsite.setVisible(false);
+				
 				if(!chckbxUniversity.isSelected()) {
 					btnToWindowsWebsite.setVisible(false);
+					textPane.setText("");
 				}
+				
 				else if(chckbxWindows.isSelected()) {
 					chckbxWindows.setSelected(false);
 				}
+				
 				else if(chckbxMac.isSelected()) {
 					chckbxMac.setSelected(false);
 				}
@@ -115,7 +139,7 @@ public class BadRemoteDesktopLogin {
 		
 		
 		textPane.setBackground(Color.LIGHT_GRAY);
-		textPane.setBounds(20, 152, 464, 124);
+		textPane.setBounds(20, 152, 464, 175);
 		frame.getContentPane().add(textPane);
 		
 		btnToWindowsWebsite.addActionListener(new ActionListener() {
@@ -141,8 +165,74 @@ public class BadRemoteDesktopLogin {
 		});
 		btnToWindowsWebsite.setVisible(false);
 		btnToWindowsWebsite.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnToWindowsWebsite.setBounds(521, 152, 255, 49);
+		btnToWindowsWebsite.setBounds(521, 141, 255, 49);
 		frame.getContentPane().add(btnToWindowsWebsite);
+		
+		
+		btnToMacWebsite.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://oit.unr.edu/services-and-support/network-and-internet/remote-access/remote-services/remote-application-connections/macosx/");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnToMacWebsite.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnToMacWebsite.setBounds(521, 209, 255, 49);
+		btnToMacWebsite.setVisible(false);
+		frame.getContentPane().add(btnToMacWebsite);
+		
+		JLabel lblIfTheUser = new JLabel("If the user is still unable to login, verify they have an active NetID and that their password");
+		lblIfTheUser.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblIfTheUser.setBounds(10, 359, 766, 27);
+		frame.getContentPane().add(lblIfTheUser);
+		
+		JLabel lblTheir = new JLabel("isn't expired.");
+		lblTheir.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblTheir.setBounds(10, 384, 766, 27);
+		frame.getContentPane().add(lblTheir);
+		
+		JLabel lblNewLabel_2 = new JLabel("If still unable to login, reset the users NetID password");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(20, 410, 740, 27);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JButton btnNetIDReset = new JButton("NetID Reset");
+		btnNetIDReset.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
+				NetIDResetWindow redirect = new NetIDResetWindow();
+			}
+		});
+		btnNetIDReset.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNetIDReset.setBounds(10, 448, 205, 41);
+		frame.getContentPane().add(btnNetIDReset);
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				MainWindow redirect = new MainWindow();
+			}
+		});
+		btnMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnMainMenu.setBounds(571, 448, 205, 41);
+		frame.getContentPane().add(btnMainMenu);
 		
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

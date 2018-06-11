@@ -1,6 +1,7 @@
 package testing;
 
 import java.awt.Color;
+import java.awt.Desktop;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +13,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.swing.JTextPane;
 
 public class BadBoxLogin {
@@ -173,6 +177,32 @@ public class BadBoxLogin {
 		btnMainmenu.setBounds(530, 398, 225, 45);
 		frame.getContentPane().add(btnMainmenu);
 		btnStudentEmail.setVisible(false);
+		
+		JButton btnToSecurity = new JButton("To Security Website");
+		btnToSecurity.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://security.unr.edu/");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnToSecurity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnToSecurity.setBounds(514, 27, 262, 32);
+		frame.getContentPane().add(btnToSecurity);
 
 	}
 }

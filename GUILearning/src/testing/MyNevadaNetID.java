@@ -1,11 +1,14 @@
 package testing;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -326,6 +329,32 @@ public class MyNevadaNetID {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		lblNewLabel.setBounds(10, 11, 743, 57);
 		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnToSecurity = new JButton("To Security Website");
+		btnToSecurity.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://security.unr.edu/");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnToSecurity.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnToSecurity.setBounds(453, 79, 262, 32);
+		frame.getContentPane().add(btnToSecurity);
 		lblError.setVisible(false);
 		
 	}

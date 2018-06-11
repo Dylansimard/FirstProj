@@ -109,8 +109,10 @@ public class MainWindow {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				input = textArea.getText();
-				frame.dispose();
-				ContinueLinkingPage redirect = new ContinueLinkingPage(input);
+				if(!input.isEmpty()) {
+					frame.dispose();
+					ContinueLinkingPage redirect = new ContinueLinkingPage(input);
+				}
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 25));
