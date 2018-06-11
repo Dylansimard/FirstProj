@@ -15,9 +15,11 @@ import java.awt.event.MouseEvent;
 
 public class MainWindow {
 
+	
 	JFrame frame;
-	private JFrame NSHEFrame;
-
+	private String input;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -103,6 +105,14 @@ public class MainWindow {
 		
 		//button for continue
 		JButton btnContinue = new JButton("Continue\r\n");
+		btnContinue.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				input = textArea.getText();
+				frame.dispose();
+				ContinueLinkingPage redirect = new ContinueLinkingPage(input);
+			}
+		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		

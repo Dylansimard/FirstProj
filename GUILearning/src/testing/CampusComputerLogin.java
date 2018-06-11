@@ -45,6 +45,7 @@ public class CampusComputerLogin {
 		txtpnAfterGettingThem.setText("After getting them a temporary password, they just need to login to the computer with their NetID and the temporary password, and it will prompt them to change their password");
 		txtpnAfterGettingThem.setBackground(Color.LIGHT_GRAY);
 		txtpnAfterGettingThem.setBounds(30, 125, 673, 199);
+		txtpnAfterGettingThem.setEditable(false);
 		frame.getContentPane().add(txtpnAfterGettingThem);
 		
 		btnNetIDReset = new JButton("NetID Reset");
