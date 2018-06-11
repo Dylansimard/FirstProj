@@ -173,6 +173,13 @@ public class BadLoginWindow {
 		
 		//remote desktop login
 		JButton btnRemoteDesktop = new JButton("Remote Desktop");
+		btnRemoteDesktop.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				BadRemoteDesktopLogin redirect = new BadRemoteDesktopLogin();
+			}
+		});
 		btnRemoteDesktop.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnRemoteDesktop.setBounds(280, 204, 207, 46);
 		frame.getContentPane().add(btnRemoteDesktop);

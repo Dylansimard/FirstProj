@@ -140,7 +140,7 @@ public class BadBoxLogin {
 			
 		});
 		btnNetidReset.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNetidReset.setBounds(492, 398, 225, 45);
+		btnNetidReset.setBounds(279, 398, 225, 45);
 		frame.getContentPane().add(btnNetidReset);
 		
 		
@@ -159,6 +159,19 @@ public class BadBoxLogin {
 		btnStudentEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnStudentEmail.setBounds(564, 221, 212, 57);
 		frame.getContentPane().add(btnStudentEmail);
+		
+		JButton btnMainmenu = new JButton("Main Menu");
+		btnMainmenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+				MainWindow redirect = new MainWindow();
+			}
+		});
+		
+		btnMainmenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnMainmenu.setBounds(530, 398, 225, 45);
+		frame.getContentPane().add(btnMainmenu);
 		btnStudentEmail.setVisible(false);
 
 	}
