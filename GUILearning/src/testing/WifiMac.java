@@ -44,7 +44,7 @@ public class WifiMac {
 		
 		JLabel label1 = new JLabel("");
 		JLabel lblStillNotWorking = new JLabel("Still not working? Verify user can login using NetID on the security tool");
-		JLabel lblNewLabel_1 = new JLabel("If they are able too, remove the network driver, instructions below");
+		JLabel lblNewLabel_1 = new JLabel("If they are able to, remove the network driver, instructions below");
 		
 		JButton btnInstructions1 = new JButton("Instructions");
 		JButton btnInstructions2 = new JButton("Instructions");

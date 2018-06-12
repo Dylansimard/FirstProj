@@ -10,6 +10,9 @@ import java.awt.Font;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
@@ -46,9 +49,8 @@ public class HousingLogin {
 		
 		
 		JButton btnHousingLink = new JButton("Link to housing application");
-		btnHousingLink.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnHousingLink.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				
@@ -111,9 +113,8 @@ public class HousingLogin {
 		frame.getContentPane().add(lblPicture2);
 		
 		JButton btnNewButton = new JButton("Main Menu");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow redirect = new MainWindow();
 			}

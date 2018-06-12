@@ -62,9 +62,8 @@ public class MainWindow {
 		
 		//button for NSHE reset, need to code into next window
 		JButton btnNSHEReset = new JButton("NSHE Reset");
-		btnNSHEReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNSHEReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				
 				NSHEResetWindow reset = new NSHEResetWindow();
@@ -79,9 +78,8 @@ public class MainWindow {
 		
 		//button for NetID resets, need to code into next window
 		JButton btnNetidReset = new JButton("NetID Reset\r\n");
-		btnNetidReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNetidReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				
 				NetIDResetWindow reset = new NetIDResetWindow();
@@ -95,7 +93,6 @@ public class MainWindow {
 		//button for can't login, need to code into next window
 		JButton btnBadLogin = new JButton("Can't Login?");
 		btnBadLogin.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				
@@ -108,9 +105,8 @@ public class MainWindow {
 		
 		//button for continue
 		JButton btnContinue = new JButton("Continue\r\n");
-		btnContinue.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				input = textArea.getText();
 				if(!input.isEmpty()) {
 					frame.dispose();

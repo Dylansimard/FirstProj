@@ -60,8 +60,6 @@ public class IncognitoShortcuts {
 		//action on check, goes through steps to make sure only mac or windows is checked
 		//will uncheck other if attempt to check both
 		chckbxWindows.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isWindowsChecked) {
 					isWindowsChecked = false;
@@ -90,8 +88,6 @@ public class IncognitoShortcuts {
 		//action on check, goes through steps to make sure only mac or windows is checked
 		//will uncheck other if attempt to check both		
 		chckbxMac.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isMacChecked) {
 					isMacChecked = false;
@@ -115,8 +111,6 @@ public class IncognitoShortcuts {
 		//active listener for Safari checkbox
 		//makes sure only one box can be checked
 		chckbxSafari.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isSafariChecked) {
 					isSafariChecked = false;
@@ -149,8 +143,6 @@ public class IncognitoShortcuts {
 		//active listener for Chrome checkbox
 		//makes sure only one box can be checked
 		chckbxChrome.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isChromeChecked) {
 					isChromeChecked = false;
@@ -180,8 +172,6 @@ public class IncognitoShortcuts {
 		//active listener for Firefox checkbox
 		//makes sure only one box can be checked
 		chckbxFirefox.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isFirefoxChecked) {
 					isFirefoxChecked = false;
@@ -211,9 +201,8 @@ public class IncognitoShortcuts {
 		
 		//action for shortcut button, makes keyboard command for private window visible
 		JButton btnShortcut = new JButton("Shortcut");
-		btnShortcut.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnShortcut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				if(isWindowsChecked && isChromeChecked) {
 					lblShortcutMessage.setText("Ctrl-Shift-n");
 					lblKeyCommand.setVisible(true);
@@ -269,16 +258,10 @@ public class IncognitoShortcuts {
 		JButton btnToMainMenu = new JButton("Main Menu");
 		btnToMainMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnToMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
 				MainWindow newWindow = new MainWindow();
 			}
-		});
-		
+		});		
 		//setting properties of return to main menu button
 		btnToMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnToMainMenu.setBounds(567, 432, 209, 57);
@@ -297,9 +280,8 @@ public class IncognitoShortcuts {
 		
 		
 		JButton btnNetIDReset = new JButton("NetID password reset");
-		btnNetIDReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNetIDReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				NetIDResetWindow redirect = new NetIDResetWindow();
 			}
@@ -311,9 +293,8 @@ public class IncognitoShortcuts {
 		
 		
 		JButton btnNSHEIDReset = new JButton("NSHE ID password reset");
-		btnNSHEIDReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNSHEIDReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				NSHEResetWindow redirect = new NSHEResetWindow();
 			}

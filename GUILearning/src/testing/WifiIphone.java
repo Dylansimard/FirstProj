@@ -41,9 +41,8 @@ public class WifiIphone {
 
 		
 		JButton btnToSecurity = new JButton("To Security Website");
-		btnToSecurity.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToSecurity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 					URI eduWebsiteLink = null;

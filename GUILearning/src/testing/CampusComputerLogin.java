@@ -50,8 +50,6 @@ public class CampusComputerLogin {
 		
 		btnNetIDReset = new JButton("NetID Reset");
 		btnNetIDReset.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				frame.dispose();
@@ -64,9 +62,8 @@ public class CampusComputerLogin {
 		frame.getContentPane().add(btnNetIDReset);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow redirect = new MainWindow();
 			}

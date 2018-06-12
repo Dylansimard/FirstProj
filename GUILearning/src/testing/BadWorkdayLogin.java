@@ -56,18 +56,17 @@ public class BadWorkdayLogin {
 		frame.getContentPane().add(lblTheGroupNeeded);
 		
 		JLabel lblTryIn = new JLabel("3.) Try in an incognito tab");
-		lblTryIn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-				IncognitoShortcuts redirect = new IncognitoShortcuts();
-			}
-		});
 		lblTryIn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTryIn.setBounds(20, 242, 726, 34);
 		frame.getContentPane().add(lblTryIn);
 		
 		JButton btnNewButton = new JButton("Incognito Shortcuts");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				IncognitoShortcuts redirect = new IncognitoShortcuts();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBounds(269, 242, 230, 31);
 		frame.getContentPane().add(btnNewButton);
@@ -83,9 +82,8 @@ public class BadWorkdayLogin {
 		frame.getContentPane().add(lblResetThe);
 		
 		JButton btnNetIDReset = new JButton("NetID Reset");
-		btnNetIDReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnNetIDReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 			frame.dispose();
 			NetIDResetWindow redirect = new NetIDResetWindow();
 			}
@@ -95,9 +93,8 @@ public class BadWorkdayLogin {
 		frame.getContentPane().add(btnNetIDReset);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow redirect = new MainWindow();
 			}
@@ -108,9 +105,8 @@ public class BadWorkdayLogin {
 
 		
 		JButton btnToSecurity = new JButton("To Security Website");
-		btnToSecurity.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToSecurity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 					URI eduWebsiteLink = null;

@@ -104,9 +104,8 @@ public class NetIDResetWindow {
 		
 		//initializing the copy button and setting mouseclick to copy to clipboard
 		btn_Copy = new JButton("Copy");
-		btn_Copy.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btn_Copy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				NetID = textField_NetID.getText();
 				DOB = textField_DOB.getText();
 				SSN = textField_SSN.getText();
@@ -128,9 +127,8 @@ public class NetIDResetWindow {
 		//button to go to the supportcenter slack channel
 		//verifies that desktop is able to connect and browser is supported, then goes to link in default browser
 		JButton btnToSupportcenter = new JButton("To supportcenter");
-		btnToSupportcenter.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToSupportcenter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				

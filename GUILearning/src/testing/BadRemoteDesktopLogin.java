@@ -52,8 +52,7 @@ public class BadRemoteDesktopLogin {
 		textPane.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		
-		chckbxWindows.addActionListener(new ActionListener() {	
-			@Override
+		chckbxWindows.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				
@@ -84,7 +83,6 @@ public class BadRemoteDesktopLogin {
 		
 		
 		chckbxMac.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				textPane.setText("These instructions are for Microsoft Remote Desktop 8, not version 10\n\n"
@@ -116,7 +114,6 @@ public class BadRemoteDesktopLogin {
 		
 		
 		chckbxUniversity.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				textPane.setText("On a University machine (verify if windows still, if mac go to mac instructions), the user must go to \"remote.unr.edu\", they'll need to sign in, download the file, and then run it. When running it, they will need to enter their NetID" + 
@@ -148,7 +145,6 @@ public class BadRemoteDesktopLogin {
 		frame.getContentPane().add(textPane);
 		
 		btnToWindowsWebsite.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
@@ -175,7 +171,6 @@ public class BadRemoteDesktopLogin {
 		
 		
 		btnToMacWebsite.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
@@ -216,9 +211,8 @@ public class BadRemoteDesktopLogin {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnNetIDReset = new JButton("NetID Reset");
-		btnNetIDReset.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnNetIDReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				NetIDResetWindow redirect = new NetIDResetWindow();
 			}
@@ -228,9 +222,8 @@ public class BadRemoteDesktopLogin {
 		frame.getContentPane().add(btnNetIDReset);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow redirect = new MainWindow();
 			}

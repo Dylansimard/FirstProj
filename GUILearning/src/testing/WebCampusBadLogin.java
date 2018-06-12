@@ -95,8 +95,6 @@ public class WebCampusBadLogin {
 		//action on check, goes through steps to make sure only mac or windows is checked
 		//will uncheck other if attempt to check both
 		chckbxWindows.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isWindowsChecked) {
 					isWindowsChecked = false;
@@ -125,8 +123,6 @@ public class WebCampusBadLogin {
 		//action on check, goes through steps to make sure only mac or windows is checked
 		//will uncheck other if attempt to check both		
 		chckbxMac.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isMacChecked) {
 					isMacChecked = false;
@@ -150,8 +146,6 @@ public class WebCampusBadLogin {
 		//active listener for Safari checkbox
 		//makes sure only one box can be checked
 		chckbxSafari.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isSafariChecked) {
 					isSafariChecked = false;
@@ -184,8 +178,6 @@ public class WebCampusBadLogin {
 		//active listener for Chrome checkbox
 		//makes sure only one box can be checked
 		chckbxChrome.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isChromeChecked) {
 					isChromeChecked = false;
@@ -215,8 +207,6 @@ public class WebCampusBadLogin {
 		//active listener for Firefox checkbox
 		//makes sure only one box can be checked
 		chckbxFirefox.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(isFirefoxChecked) {
 					isFirefoxChecked = false;
@@ -246,9 +236,8 @@ public class WebCampusBadLogin {
 		
 		//action for shortcut button, makes keyboard command for private window visible
 		JButton btnShortcut = new JButton("Shortcut");
-		btnShortcut.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnShortcut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				if(isWindowsChecked && isChromeChecked) {
 					lblShortcutMessage.setText("Ctrl-Shift-n");
 					lblKeyCommand.setVisible(true);
@@ -297,9 +286,8 @@ public class WebCampusBadLogin {
 		
 		//button to link to the NetID reset page.
 		JButton btnNewButton = new JButton("Reset NetID Password\r\n");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				NetIDResetWindow netIDReset = new NetIDResetWindow();
 			}
@@ -316,9 +304,8 @@ public class WebCampusBadLogin {
 		
 		
 		JButton btnToMainMenu = new JButton("Main Menu");
-		btnToMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow newWindow = new MainWindow();
 			}
@@ -336,9 +323,8 @@ public class WebCampusBadLogin {
 		lblError.setVisible(false);
 		
 		JButton btnToSecurity = new JButton("To Security Website");
-		btnToSecurity.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToSecurity.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 					URI eduWebsiteLink = null;

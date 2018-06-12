@@ -42,7 +42,6 @@ public class BadWifiLogin {
 		JLabel lblError = new JLabel("Not a valid option");
 		
 		chckbxEduroam.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				lblUseIndicator.setText("Eduroam is for user's with a NetID");
 				if(!chckbxEduroam.isSelected()) {
@@ -93,8 +92,6 @@ public class BadWifiLogin {
 		frame.getContentPane().add(lblWhatDevice);
 		
 		chckbxComputer.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxEduroam.isSelected() || chckbxUnrGuest.isSelected()) {
 					if(chckbxComputer.isSelected()) {
@@ -131,7 +128,6 @@ public class BadWifiLogin {
 		frame.getContentPane().add(chckbxComputer);
 		
 		chckbxPhone.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxEduroam.isSelected() || chckbxUnrGuest.isSelected()) {
 					if(chckbxPhone.isSelected()) {
@@ -176,7 +172,6 @@ public class BadWifiLogin {
 		
 		
 		chckbxIOSIphone.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxAndroid.isSelected()) {
 					chckbxAndroid.setSelected(false);
@@ -189,7 +184,6 @@ public class BadWifiLogin {
 		chckbxIOSIphone.setVisible(false);
 		
 		chckbxAndroid.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxIOSIphone.isSelected()) {
 					chckbxIOSIphone.setSelected(false);
@@ -203,7 +197,6 @@ public class BadWifiLogin {
 		
 		
 		chckbxWindows.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxOsxmac.isSelected()) {
 					chckbxOsxmac.setSelected(false);
@@ -217,7 +210,6 @@ public class BadWifiLogin {
 		
 		
 		chckbxOsxmac.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxWindows.isSelected()) {
 					chckbxWindows.setSelected(false);
@@ -231,7 +223,6 @@ public class BadWifiLogin {
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxUnrGuest.isSelected()) {
 					frame.dispose();

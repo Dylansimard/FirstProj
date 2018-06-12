@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
@@ -114,9 +117,8 @@ public class NSHEResetWindow {
 		
 		//initializing the copy button and setting mouseclick to copy to clipboard
 		btn_Copy = new JButton("Copy");
-		btn_Copy.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btn_Copy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				NSHE_ID = textField_NSHE.getText();
 				DOB = textField_DOB.getText();
 				SSN = textField_SSN.getText();
@@ -138,9 +140,8 @@ public class NSHEResetWindow {
 		//button to go to the supportcenter slack channel
 		//verifies that desktop is able to connect and browser is supported, then goes to link in default browser
 		JButton btnToSupportcenter = new JButton("To supportcenter");
-		btnToSupportcenter.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToSupportcenter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 				
@@ -174,9 +175,8 @@ public class NSHEResetWindow {
 		
 		//button to reset to the main menu
 		JButton btnToMainMenu = new JButton("Main Menu");
-		btnToMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow newWindow = new MainWindow();
 			}

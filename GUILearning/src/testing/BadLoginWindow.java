@@ -37,9 +37,8 @@ public class BadLoginWindow {
 		
 		//webcampus login
 		JButton btnWebCampus = new JButton("WebCampus");
-		btnWebCampus.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnWebCampus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				WebCampusBadLogin webCampusRedirect = new WebCampusBadLogin();
 			}
@@ -52,9 +51,8 @@ public class BadLoginWindow {
 		
 		//myNevada login
 		JButton btnMynevada = new JButton("MyNevada");
-		btnMynevada.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnMynevada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MyNevadaBadLoginInit MyNevadaLogin = new MyNevadaBadLoginInit();
 			}			
@@ -133,8 +131,6 @@ public class BadLoginWindow {
 		//campus computer login
 		JButton btnCampusComputer = new JButton("Campus Computer");
 		btnCampusComputer.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				CampusComputerLogin redirect = new CampusComputerLogin();
@@ -153,8 +149,6 @@ public class BadLoginWindow {
 		//workday login
 		JButton btnWorkday = new JButton("Workday\r\n\r\n");
 		btnWorkday.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				BadWorkdayLogin redirect = new BadWorkdayLogin();
@@ -169,9 +163,8 @@ public class BadLoginWindow {
 		
 		//remote desktop login
 		JButton btnRemoteDesktop = new JButton("Remote Desktop");
-		btnRemoteDesktop.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnRemoteDesktop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				BadRemoteDesktopLogin redirect = new BadRemoteDesktopLogin();
 			}
@@ -184,7 +177,6 @@ public class BadLoginWindow {
 		//wifi login
 		JButton btnWifi = new JButton("Wifi");
 		btnWifi.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				BadWifiLogin redirect = new BadWifiLogin();
@@ -210,9 +202,8 @@ public class BadLoginWindow {
 		
 		
 		JButton btnToMainMenu = new JButton("Main Menu");
-		btnToMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow newWindow = new MainWindow();
 			}

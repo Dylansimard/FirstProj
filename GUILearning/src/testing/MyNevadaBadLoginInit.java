@@ -67,8 +67,6 @@ public class MyNevadaBadLoginInit {
 		//verifies that applicant ID is the only one checked,
 		//and shows/hides applicable message.
 		chckbxApplicant.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(isApplicantChecked) {
@@ -109,8 +107,6 @@ public class MyNevadaBadLoginInit {
 		//verifies that NSHE ID is the only one checked,
 		//and shows/hides applicable message.
 		chckbxNSHE.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(isNSHEChecked) {
@@ -152,8 +148,6 @@ public class MyNevadaBadLoginInit {
 		
 		
 		chckbxNetID.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				if(isNetIDChecked) {
@@ -244,9 +238,8 @@ public class MyNevadaBadLoginInit {
 
 		
 		JButton btnContinue = new JButton("Continue");
-		btnContinue.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				if(isApplicantChecked) {
 					frame.dispose();	
 					MyNevadaApplicationID redirect = new MyNevadaApplicationID();

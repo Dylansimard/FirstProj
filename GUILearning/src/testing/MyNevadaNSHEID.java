@@ -64,8 +64,6 @@ public class MyNevadaNSHEID {
 		
 		
 		chckbxStudent.addActionListener(new ActionListener() {
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				if(isStudentChecked) {
@@ -88,8 +86,6 @@ public class MyNevadaNSHEID {
 		frame.getContentPane().add(chckbxStudent);
 		
 		chckbxProfessor.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				if(isProfessorChecked) {
@@ -126,9 +122,8 @@ public class MyNevadaNSHEID {
 		frame.getContentPane().add(lblIfItIsnt);
 		
 		JButton btnNewButton = new JButton("Incognito Shortcuts");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				IncognitoShortcuts redirect = new IncognitoShortcuts();
 			}
@@ -138,9 +133,8 @@ public class MyNevadaNSHEID {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainWindow redirect = new MainWindow();
 			}
