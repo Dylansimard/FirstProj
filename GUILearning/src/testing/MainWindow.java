@@ -10,6 +10,9 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -91,9 +94,9 @@ public class MainWindow {
 		
 		//button for can't login, need to code into next window
 		JButton btnBadLogin = new JButton("Can't Login?");
-		btnBadLogin.addMouseListener(new MouseAdapter() {
+		btnBadLogin.addActionListener(new ActionListener() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				
 				BadLoginWindow badLogin = new BadLoginWindow();

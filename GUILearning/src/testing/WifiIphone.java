@@ -4,12 +4,13 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public class BadGuestWifi {
+public class WifiIphone {
 	private JFrame frame;
 	
-	BadGuestWifi(){
+	WifiIphone(){
 		initialize();
 	}
+	
 	void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);

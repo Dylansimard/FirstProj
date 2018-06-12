@@ -4,10 +4,10 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public class WindowsEduWifi {
+public class WifiAndroid {
 	private JFrame frame;
 	
-	WindowsEduWifi(){
+	WifiAndroid(){
 		initialize();
 	}
 	
@@ -19,4 +19,4 @@ public class WindowsEduWifi {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
-}	
+}

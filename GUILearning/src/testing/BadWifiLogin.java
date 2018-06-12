@@ -6,11 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 public class BadWifiLogin {
 	private JFrame frame;
@@ -38,6 +39,7 @@ public class BadWifiLogin {
 		JCheckBox chckbxAndroid = new JCheckBox("Android");
 		JCheckBox chckbxWindows = new JCheckBox("Windows");
 		JCheckBox chckbxOsxmac = new JCheckBox("OSX (Mac)");
+		JLabel lblError = new JLabel("Not a valid option");
 		
 		chckbxEduroam.addMouseListener(new MouseAdapter() {
 			@Override
@@ -90,54 +92,71 @@ public class BadWifiLogin {
 		lblWhatDevice.setBounds(10, 192, 650, 32);
 		frame.getContentPane().add(lblWhatDevice);
 		
-		chckbxComputer.addMouseListener(new MouseAdapter() {
+		chckbxComputer.addActionListener(new ActionListener() {
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				if(chckbxPhone.isSelected()) {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxComputer.isSelected()) {
 					chckbxPhone.setSelected(false);
-					chckbxIOSIphone.setVisible(false);
-					chckbxAndroid.setVisible(false);
-					chckbxIOSIphone.setSelected(false);
-					chckbxAndroid.setSelected(false);
-				}
-				if(!chckbxComputer.isSelected()) {
-					chckbxWindows.setSelected(false);
-					chckbxWindows.setVisible(false);
+					
+					chckbxOsxmac.setVisible(true);
 					chckbxOsxmac.setSelected(false);
-					chckbxOsxmac.setVisible(false);
+					
+					chckbxWindows.setVisible(true);
+					chckbxWindows.setSelected(false);
+					
+					chckbxAndroid.setVisible(false);
+					chckbxAndroid.setSelected(false);
+					
+					chckbxIOSIphone.setVisible(false);
+					chckbxIOSIphone.setSelected(false);
+					
 				}
 				else {
-					chckbxWindows.setVisible(true);
-					chckbxOsxmac.setVisible(true);
+					chckbxOsxmac.setSelected(false);
+					chckbxOsxmac.setVisible(false);
+					
+					chckbxWindows.setSelected(false);
+					chckbxWindows.setVisible(false);
 				}
+
 			}
 		});
 		chckbxComputer.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		chckbxComputer.setBounds(10, 231, 183, 47);
 		frame.getContentPane().add(chckbxComputer);
 		
-		chckbxPhone.addMouseListener(new MouseAdapter() {
+		chckbxPhone.addActionListener(new ActionListener() {
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(chckbxComputer.isSelected()) {
+			public void actionPerformed(ActionEvent arg0) {
+
+				if(chckbxPhone.isSelected()) {
 					chckbxComputer.setSelected(false);
-					chckbxWindows.setVisible(false);
-					chckbxWindows.setSelected(false);
-					chckbxOsxmac.setVisible(false);
+					
+					chckbxAndroid.setVisible(true);
+					chckbxAndroid.setSelected(false);
+					
+					chckbxIOSIphone.setVisible(true);
+					chckbxIOSIphone.setSelected(false);
+					
 					chckbxOsxmac.setSelected(false);
+					chckbxOsxmac.setVisible(false);
+					
+					chckbxWindows.setSelected(false);
+					chckbxWindows.setVisible(false);
+					
+					
 				}
 				
-				if(!chckbxPhone.isSelected()) {
-					chckbxIOSIphone.setVisible(false);
-					chckbxAndroid.setVisible(false);
-					chckbxIOSIphone.setSelected(false);
-					chckbxAndroid.setSelected(false);
-				}
 				else {
-					chckbxIOSIphone.setVisible(true);
-					chckbxAndroid.setVisible(true);
+					chckbxAndroid.setVisible(false);
+					chckbxAndroid.setSelected(false);
+					
+					chckbxIOSIphone.setVisible(false);
+					chckbxIOSIphone.setSelected(false);
 				}
+			
 			}
 		});
 		chckbxPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -196,43 +215,50 @@ public class BadWifiLogin {
 		chckbxOsxmac.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		chckbxOsxmac.setBounds(259, 425, 183, 47);
 		frame.getContentPane().add(chckbxOsxmac);
+		chckbxOsxmac.setVisible(false);
 		
 		JButton btnContinue = new JButton("Continue");
-		btnContinue.addMouseListener(new MouseAdapter() {
+		btnContinue.addActionListener(new ActionListener() {
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxUnrGuest.isSelected()) {
 					frame.dispose();
-					BadGuestWifi redirect = new BadGuestWifi();
+					WifiGuest redirect = new WifiGuest();
 				}
-				else {
+				else if(chckbxEduroam.isSelected()) {
 					if(chckbxComputer.isSelected()) {
 						if(chckbxWindows.isSelected()) {
 							frame.dispose();
-							WindowsEduWifi redirect = new WindowsEduWifi();
+							WifiWindows redirect = new WifiWindows();
 						}
 						else if(chckbxOsxmac.isSelected()){
 							frame.dispose();
-							MacEduWifi redirect = new MacEduWifi();
+							WifiMac redirect = new WifiMac();
 						}
 					}
-					else {
+					else if(chckbxPhone.isSelected()) {
 						if(chckbxAndroid.isSelected()) {
 							frame.dispose();
-							AndroidEduWifi redirect = new AndroidEduWifi();
+							WifiAndroid redirect = new WifiAndroid();
 						}
 						else if(chckbxIOSIphone.isSelected()) {
 							frame.dispose();
-							IphoneEduWifi redirect = new IphoneEduWifi();
+							WifiIphone redirect = new WifiIphone();
 						}
 					}
 				}
+				lblError.setVisible(true);
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnContinue.setBounds(593, 423, 183, 66);
 		frame.getContentPane().add(btnContinue);
-		chckbxOsxmac.setVisible(false);
+		
+		lblError.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblError.setBounds(593, 380, 183, 32);
+		frame.getContentPane().add(lblError);
+		lblError.setVisible(false);
 		
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

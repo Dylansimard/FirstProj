@@ -4,13 +4,13 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public class AndroidEduWifi {
+public class WifiMac {
 	private JFrame frame;
 	
-	AndroidEduWifi(){
+	WifiMac(){
 		initialize();
 	}
-	
+
 	void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -20,3 +20,4 @@ public class AndroidEduWifi {
 		frame.setVisible(true);
 	}
 }
+
