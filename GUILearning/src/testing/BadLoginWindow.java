@@ -198,6 +198,12 @@ public class BadLoginWindow {
 		
 		//transcript request login
 		JButton btnTranscriptRequests = new JButton("Transcript Request");
+		btnTranscriptRequests.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				BadTranscriptRequest redirect = new BadTranscriptRequest();
+			}
+		});
 		btnTranscriptRequests.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnTranscriptRequests.setBounds(280, 318, 207, 46);
 		frame.getContentPane().add(btnTranscriptRequests);

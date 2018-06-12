@@ -196,9 +196,12 @@ public class BadWifiLogin {
 		chckbxAndroid.setVisible(false);
 		
 		
-		chckbxWindows.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxWindows.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxOsxmac.isSelected()) {
+					chckbxOsxmac.setSelected(false);
+				}
 			}
 		});
 		chckbxWindows.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -207,9 +210,12 @@ public class BadWifiLogin {
 		chckbxWindows.setVisible(false);
 		
 		
-		chckbxOsxmac.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxOsxmac.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxWindows.isSelected()) {
+					chckbxWindows.setSelected(false);
+				}
 			}
 		});
 		chckbxOsxmac.setFont(new Font("Tahoma", Font.PLAIN, 20));

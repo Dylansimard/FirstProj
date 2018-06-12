@@ -149,15 +149,17 @@ public class WifiWindows {
 					lblVerifyTheUser.setVisible(false);
 				}
 				if(chckbxYes.isSelected()) {
-					lblYesChecked.setVisible(true);
 					if(chckbxWin10.isSelected()) {
 						btnInstructionsW10.setVisible(true);
+						lblYesChecked.setVisible(true);
 					}
 					else if(chckbxWin7.isSelected()) {
 						btnInstructionsW7.setVisible(true);
+						lblYesChecked.setVisible(true);
 					}
 					else if(chckbxWin8.isSelected()) {
 						btnInstructionsW8.setVisible(true);
+						lblYesChecked.setVisible(true);
 					}
 				}
 				else {
