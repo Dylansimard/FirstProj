@@ -1,12 +1,15 @@
 package testing;
 
 import java.awt.Color;
+import java.awt.Desktop;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -39,6 +42,11 @@ public class WifiWindows {
 		JCheckBox chckbxYes = new JCheckBox("Yes\r\n");
 
 		JLabel lblVerifyTheUser = new JLabel("Verify the user can use their NetID and password elsewhere, if not, reset their password");
+		JLabel lblYesChecked = new JLabel("Have the user remove the network and reconnect, instructions below");
+		
+		JButton btnInstructionsW7 = new JButton("Instructions");
+		JButton btnInstructionsW8 = new JButton("Instructions");
+		JButton btnInstructionsW10 = new JButton("Instructions");
 		
 		chckbxWin7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -52,10 +60,15 @@ public class WifiWindows {
 				}
 				
 				if(chckbxWin7.isSelected()) {
-					
+					if(chckbxYes.isSelected()) {
+						btnInstructionsW10.setVisible(false);
+						btnInstructionsW7.setVisible(true);
+						btnInstructionsW8.setVisible(false);
+					}
 				}
 				else {
 					chckbxWin7.setSelected(false);
+					btnInstructionsW7.setVisible(false);
 				}
 			}
 		});
@@ -76,10 +89,15 @@ public class WifiWindows {
 				}
 				
 				if(chckbxWin8.isSelected()) {
-					
+					if(chckbxYes.isSelected()) {
+						btnInstructionsW10.setVisible(false);
+						btnInstructionsW7.setVisible(false);
+						btnInstructionsW8.setVisible(true);
+					}
 				}
 				else {
 					chckbxWin8.setSelected(false);
+					btnInstructionsW8.setVisible(false);
 				}
 			}
 		});
@@ -100,10 +118,15 @@ public class WifiWindows {
 				}
 				
 				if(chckbxWin10.isSelected()) {
-					
+					if(chckbxYes.isSelected()) {
+						btnInstructionsW10.setVisible(true);
+						btnInstructionsW7.setVisible(false);
+						btnInstructionsW8.setVisible(false);
+					}
 				}
 				else {
 					chckbxWin10.setSelected(false);
+					btnInstructionsW10.setVisible(false);
 				}
 				
 			}
@@ -126,10 +149,22 @@ public class WifiWindows {
 					lblVerifyTheUser.setVisible(false);
 				}
 				if(chckbxYes.isSelected()) {
-					
+					lblYesChecked.setVisible(true);
+					if(chckbxWin10.isSelected()) {
+						btnInstructionsW10.setVisible(true);
+					}
+					else if(chckbxWin7.isSelected()) {
+						btnInstructionsW7.setVisible(true);
+					}
+					else if(chckbxWin8.isSelected()) {
+						btnInstructionsW8.setVisible(true);
+					}
 				}
 				else {
 					chckbxYes.setSelected(false);
+					btnInstructionsW10.setVisible(false);
+					btnInstructionsW7.setVisible(false);
+					btnInstructionsW8.setVisible(false);
 				}
 			}
 		});
@@ -141,7 +176,11 @@ public class WifiWindows {
 		chckbxNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(chckbxYes.isSelected()) {
+					lblYesChecked.setVisible(false);
 					chckbxYes.setSelected(false);
+					btnInstructionsW10.setVisible(false);
+					btnInstructionsW7.setVisible(false);
+					btnInstructionsW8.setVisible(false);
 				}
 				if(chckbxNo.isSelected()) {
 					lblVerifyTheUser.setVisible(true);
@@ -183,6 +222,95 @@ public class WifiWindows {
 		btnMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMainMenu.setBounds(592, 439, 184, 49);
 		frame.getContentPane().add(btnMainMenu);
+		
+		
+		lblYesChecked.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblYesChecked.setBounds(30, 310, 746, 28);
+		frame.getContentPane().add(lblYesChecked);
+		lblYesChecked.setVisible(false);
+		
+		
+		btnInstructionsW7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://www.tp-link.com/us/faq-281.html");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnInstructionsW7.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnInstructionsW7.setBounds(20, 439, 144, 49);
+		frame.getContentPane().add(btnInstructionsW7);
+		btnInstructionsW7.setVisible(false);
+		
+		
+		btnInstructionsW8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://www.digitalcitizen.life/how-delete-forget-wireless-network-profiles-windows-81");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnInstructionsW8.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnInstructionsW8.setBounds(199, 439, 144, 49);
+		frame.getContentPane().add(btnInstructionsW8);
+		btnInstructionsW8.setVisible(false);
+		
+		
+		btnInstructionsW10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://www.howtogeek.com/246104/how-to-delete-a-saved-wi-fi-network-on-windows-10/");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnInstructionsW10.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnInstructionsW10.setBounds(383, 439, 144, 49);
+		frame.getContentPane().add(btnInstructionsW10);
+		btnInstructionsW10.setVisible(false);
+		
+		
 		frame.setBounds(100, 100, 802, 539);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);

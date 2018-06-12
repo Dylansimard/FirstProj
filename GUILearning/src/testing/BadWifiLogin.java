@@ -169,9 +169,9 @@ public class BadWifiLogin {
 		frame.getContentPane().add(lblWhatIs);
 		
 		
-		chckbxIOSIphone.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxIOSIphone.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxAndroid.isSelected()) {
 					chckbxAndroid.setSelected(false);
 				}
@@ -182,9 +182,9 @@ public class BadWifiLogin {
 		frame.getContentPane().add(chckbxIOSIphone);
 		chckbxIOSIphone.setVisible(false);
 		
-		chckbxAndroid.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxAndroid.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxIOSIphone.isSelected()) {
 					chckbxIOSIphone.setSelected(false);
 				}
@@ -220,7 +220,6 @@ public class BadWifiLogin {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(chckbxUnrGuest.isSelected()) {
 					frame.dispose();

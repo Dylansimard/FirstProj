@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
@@ -162,9 +164,8 @@ public class NetIDResetWindow {
 		
 		//button to reset to the main menu
 		JButton btnToMainMenu = new JButton("Main Menu");
-		btnToMainMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnToMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				MainWindow newWindow = new MainWindow();
 			}
