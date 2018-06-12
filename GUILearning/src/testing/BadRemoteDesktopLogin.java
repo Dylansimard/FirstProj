@@ -29,6 +29,9 @@ public class BadRemoteDesktopLogin {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 802, 584);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JLabel lblNewLabel = new JLabel("Remote Desktop uses a NetID login");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -236,9 +239,23 @@ public class BadRemoteDesktopLogin {
 		btnMainMenu.setBounds(571, 448, 205, 41);
 		frame.getContentPane().add(btnMainMenu);
 		
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+
+		
+		JLabel lblNewLabel_21 = new JLabel("(Note) If a user recently changed their password, they may be locked out");
+		lblNewLabel_21.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_21.setBounds(10, 500, 449, 39);
+		frame.getContentPane().add(lblNewLabel_21);
+		
+		JButton btnLockoutInfo = new JButton("Lockout Info");
+		btnLockoutInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				NetIDLockout redirect = new NetIDLockout();
+			}
+		});
+		btnLockoutInfo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnLockoutInfo.setBounds(469, 500, 153, 39);
+		frame.getContentPane().add(btnLockoutInfo);
 		
 	}
 }

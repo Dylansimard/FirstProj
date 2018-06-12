@@ -24,6 +24,9 @@ public class WifiWindows {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 802, 584);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JLabel lblNewLabel = new JLabel("Wifi on Windows uses a NetID login");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -69,6 +72,10 @@ public class WifiWindows {
 				else {
 					chckbxWin7.setSelected(false);
 					btnInstructionsW7.setVisible(false);
+					chckbxNo.setSelected(false);
+					chckbxYes.setSelected(false);
+					lblYesChecked.setVisible(false);
+					lblVerifyTheUser.setVisible(false);
 				}
 			}
 		});
@@ -98,6 +105,10 @@ public class WifiWindows {
 				else {
 					chckbxWin8.setSelected(false);
 					btnInstructionsW8.setVisible(false);
+					chckbxNo.setSelected(false);
+					chckbxYes.setSelected(false);
+					lblYesChecked.setVisible(false);
+					lblVerifyTheUser.setVisible(false);
 				}
 			}
 		});
@@ -127,6 +138,10 @@ public class WifiWindows {
 				else {
 					chckbxWin10.setSelected(false);
 					btnInstructionsW10.setVisible(false);
+					chckbxNo.setSelected(false);
+					chckbxYes.setSelected(false);
+					lblYesChecked.setVisible(false);
+					lblVerifyTheUser.setVisible(false);
 				}
 				
 			}
@@ -144,29 +159,36 @@ public class WifiWindows {
 		
 		chckbxYes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(chckbxNo.isSelected()) {
-					chckbxNo.setSelected(false);
-					lblVerifyTheUser.setVisible(false);
-				}
-				if(chckbxYes.isSelected()) {
-					if(chckbxWin10.isSelected()) {
-						btnInstructionsW10.setVisible(true);
-						lblYesChecked.setVisible(true);
+				if(chckbxWin10.isSelected() || chckbxWin7.isSelected() || chckbxWin8.isSelected()) {
+					if(chckbxNo.isSelected()) {
+						chckbxNo.setSelected(false);
+						lblVerifyTheUser.setVisible(false);
 					}
-					else if(chckbxWin7.isSelected()) {
-						btnInstructionsW7.setVisible(true);
-						lblYesChecked.setVisible(true);
+					if(chckbxYes.isSelected()) {
+						if(chckbxWin10.isSelected()) {
+							btnInstructionsW10.setVisible(true);
+							lblYesChecked.setVisible(true);
+						}
+						else if(chckbxWin7.isSelected()) {
+							btnInstructionsW7.setVisible(true);
+							lblYesChecked.setVisible(true);
+						}
+						else if(chckbxWin8.isSelected()) {
+							btnInstructionsW8.setVisible(true);
+							lblYesChecked.setVisible(true);
+						}
 					}
-					else if(chckbxWin8.isSelected()) {
-						btnInstructionsW8.setVisible(true);
-						lblYesChecked.setVisible(true);
+					else {
+						chckbxYes.setSelected(false);
+						btnInstructionsW10.setVisible(false);
+						btnInstructionsW7.setVisible(false);
+						btnInstructionsW8.setVisible(false);
+						lblHaveThey.setVisible(false);
+						lblYesChecked.setVisible(false);
 					}
 				}
 				else {
 					chckbxYes.setSelected(false);
-					btnInstructionsW10.setVisible(false);
-					btnInstructionsW7.setVisible(false);
-					btnInstructionsW8.setVisible(false);
 				}
 			}
 		});
@@ -177,19 +199,24 @@ public class WifiWindows {
 		
 		chckbxNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(chckbxYes.isSelected()) {
-					lblYesChecked.setVisible(false);
-					chckbxYes.setSelected(false);
-					btnInstructionsW10.setVisible(false);
-					btnInstructionsW7.setVisible(false);
-					btnInstructionsW8.setVisible(false);
-				}
-				if(chckbxNo.isSelected()) {
-					lblVerifyTheUser.setVisible(true);
+				if(chckbxWin10.isSelected() || chckbxWin7.isSelected() || chckbxWin8.isSelected()) {
+					if(chckbxYes.isSelected()) {
+						lblYesChecked.setVisible(false);
+						chckbxYes.setSelected(false);
+						btnInstructionsW10.setVisible(false);
+						btnInstructionsW7.setVisible(false);
+						btnInstructionsW8.setVisible(false);
+					}
+					if(chckbxNo.isSelected()) {
+						lblVerifyTheUser.setVisible(true);
+					}
+					else {
+						chckbxNo.setSelected(false);
+						lblVerifyTheUser.setVisible(false);
+					}
 				}
 				else {
 					chckbxNo.setSelected(false);
-					lblVerifyTheUser.setVisible(false);
 				}
 			}
 		});
@@ -312,9 +339,23 @@ public class WifiWindows {
 		frame.getContentPane().add(btnInstructionsW10);
 		btnInstructionsW10.setVisible(false);
 		
+		JLabel lblNewLabel_2 = new JLabel("(Note) If a user recently changed their password, they may be locked out");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(10, 500, 449, 39);
+		frame.getContentPane().add(lblNewLabel_2);
 		
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		JButton btnLockoutInfo = new JButton("Lockout Info");
+		btnLockoutInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				NetIDLockout redirect = new NetIDLockout();
+			}
+		});
+		btnLockoutInfo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnLockoutInfo.setBounds(469, 500, 153, 39);
+		frame.getContentPane().add(btnLockoutInfo);
+		
+		
+
 	}
 }	

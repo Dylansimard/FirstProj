@@ -224,6 +224,12 @@ public class BadLoginWindow {
 		frame.getContentPane().add(btnToMainMenu);
 		
 		JButton btnNewButton = new JButton("Multiple things");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				NetIDLockout redirect = new NetIDLockout();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButton.setBounds(280, 375, 207, 103);
 		frame.getContentPane().add(btnNewButton);

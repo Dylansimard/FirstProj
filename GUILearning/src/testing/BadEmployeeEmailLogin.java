@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
@@ -23,6 +26,9 @@ public class BadEmployeeEmailLogin {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 802, 584);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JLabel lblNewLabel = new JLabel("Employee emails are almost always NetID@unr.edu\r\n");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -109,9 +115,7 @@ public class BadEmployeeEmailLogin {
 		btnMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnMainMenu.setBounds(545, 426, 231, 63);
 		frame.getContentPane().add(btnMainMenu);
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+
 		
 		JButton btnToSecurity = new JButton("To Security Website");
 		btnToSecurity.addMouseListener(new MouseAdapter() {
@@ -140,5 +144,20 @@ public class BadEmployeeEmailLogin {
 		frame.getContentPane().add(btnToSecurity);
 		
 		
+		JLabel lblNewLabel_21 = new JLabel("(Note) If a user recently changed their password, they may be locked out");
+		lblNewLabel_21.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_21.setBounds(10, 500, 449, 39);
+		frame.getContentPane().add(lblNewLabel_21);
+		
+		JButton btnLockoutInfo = new JButton("Lockout Info");
+		btnLockoutInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				NetIDLockout redirect = new NetIDLockout();
+			}
+		});
+		btnLockoutInfo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnLockoutInfo.setBounds(469, 500, 153, 39);
+		frame.getContentPane().add(btnLockoutInfo);
 	}
 }

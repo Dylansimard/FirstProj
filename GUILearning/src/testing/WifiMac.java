@@ -24,6 +24,9 @@ public class WifiMac {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setBounds(100, 100, 802, 584);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JLabel lblWifiOnMacs = new JLabel("Wifi on a Mac uses a NetID login");
 		lblWifiOnMacs.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -199,9 +202,24 @@ public class WifiMac {
 		lblNewLabel_1.setVisible(false);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		frame.setBounds(100, 100, 802, 539);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		JLabel lblNewLabel_2 = new JLabel("(Note) If a user recently changed their password, they may be locked out");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(10, 500, 449, 39);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JButton btnLockoutInfo = new JButton("Lockout Info");
+		btnLockoutInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				NetIDLockout redirect = new NetIDLockout();
+			}
+		});
+		btnLockoutInfo.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnLockoutInfo.setBounds(469, 500, 153, 39);
+		frame.getContentPane().add(btnLockoutInfo);
+
+		
+
 	}
 }
 

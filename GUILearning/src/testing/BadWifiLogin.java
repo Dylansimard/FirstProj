@@ -41,9 +41,9 @@ public class BadWifiLogin {
 		JCheckBox chckbxOsxmac = new JCheckBox("OSX (Mac)");
 		JLabel lblError = new JLabel("Not a valid option");
 		
-		chckbxEduroam.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxEduroam.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
 				lblUseIndicator.setText("Eduroam is for user's with a NetID");
 				if(!chckbxEduroam.isSelected()) {
 					lblUseIndicator.setText("");
@@ -59,9 +59,9 @@ public class BadWifiLogin {
 		frame.getContentPane().add(chckbxEduroam);
 		
 		
-		chckbxUnrGuest.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		chckbxUnrGuest.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
 				lblUseIndicator.setText("The guest network is for people who are here temporarily, that don't have NetID's");
 				
 				if(!chckbxUnrGuest.isSelected()) {
@@ -96,30 +96,34 @@ public class BadWifiLogin {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(chckbxComputer.isSelected()) {
-					chckbxPhone.setSelected(false);
-					
-					chckbxOsxmac.setVisible(true);
-					chckbxOsxmac.setSelected(false);
-					
-					chckbxWindows.setVisible(true);
-					chckbxWindows.setSelected(false);
-					
-					chckbxAndroid.setVisible(false);
-					chckbxAndroid.setSelected(false);
-					
-					chckbxIOSIphone.setVisible(false);
-					chckbxIOSIphone.setSelected(false);
-					
+				if(chckbxEduroam.isSelected() || chckbxUnrGuest.isSelected()) {
+					if(chckbxComputer.isSelected()) {
+						chckbxPhone.setSelected(false);
+						
+						chckbxOsxmac.setVisible(true);
+						chckbxOsxmac.setSelected(false);
+						
+						chckbxWindows.setVisible(true);
+						chckbxWindows.setSelected(false);
+						
+						chckbxAndroid.setVisible(false);
+						chckbxAndroid.setSelected(false);
+						
+						chckbxIOSIphone.setVisible(false);
+						chckbxIOSIphone.setSelected(false);
+						
+					}
+					else {
+						chckbxOsxmac.setSelected(false);
+						chckbxOsxmac.setVisible(false);
+						
+						chckbxWindows.setSelected(false);
+						chckbxWindows.setVisible(false);
+					}
 				}
 				else {
-					chckbxOsxmac.setSelected(false);
-					chckbxOsxmac.setVisible(false);
-					
-					chckbxWindows.setSelected(false);
-					chckbxWindows.setVisible(false);
+					chckbxComputer.setSelected(false);
 				}
-
 			}
 		});
 		chckbxComputer.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -128,35 +132,37 @@ public class BadWifiLogin {
 		
 		chckbxPhone.addActionListener(new ActionListener() {
 			
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
-
-				if(chckbxPhone.isSelected()) {
-					chckbxComputer.setSelected(false);
+				if(chckbxEduroam.isSelected() || chckbxUnrGuest.isSelected()) {
+					if(chckbxPhone.isSelected()) {
+						chckbxComputer.setSelected(false);
+						
+						chckbxAndroid.setVisible(true);
+						chckbxAndroid.setSelected(false);
+						
+						chckbxIOSIphone.setVisible(true);
+						chckbxIOSIphone.setSelected(false);
+						
+						chckbxOsxmac.setSelected(false);
+						chckbxOsxmac.setVisible(false);
+						
+						chckbxWindows.setSelected(false);
+						chckbxWindows.setVisible(false);
+						
+						
+					}
 					
-					chckbxAndroid.setVisible(true);
-					chckbxAndroid.setSelected(false);
-					
-					chckbxIOSIphone.setVisible(true);
-					chckbxIOSIphone.setSelected(false);
-					
-					chckbxOsxmac.setSelected(false);
-					chckbxOsxmac.setVisible(false);
-					
-					chckbxWindows.setSelected(false);
-					chckbxWindows.setVisible(false);
-					
-					
+					else {
+						chckbxAndroid.setVisible(false);
+						chckbxAndroid.setSelected(false);
+						
+						chckbxIOSIphone.setVisible(false);
+						chckbxIOSIphone.setSelected(false);
+					}
 				}
-				
 				else {
-					chckbxAndroid.setVisible(false);
-					chckbxAndroid.setSelected(false);
-					
-					chckbxIOSIphone.setVisible(false);
-					chckbxIOSIphone.setSelected(false);
+					chckbxPhone.setSelected(false);
 				}
-			
 			}
 		});
 		chckbxPhone.setFont(new Font("Tahoma", Font.PLAIN, 20));
