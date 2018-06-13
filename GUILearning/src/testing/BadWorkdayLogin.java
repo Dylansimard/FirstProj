@@ -55,6 +55,7 @@ public class BadWorkdayLogin {
 		lblTheGroupNeeded.setBounds(30, 186, 583, 34);
 		frame.getContentPane().add(lblTheGroupNeeded);
 		
+		
 		JLabel lblTryIn = new JLabel("3.) Try in an incognito tab");
 		lblTryIn.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTryIn.setBounds(20, 242, 726, 34);

@@ -155,7 +155,7 @@ public class NetIDResetWindow {
 		
 		//setting properties of button to support center
 		btnToSupportcenter.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		btnToSupportcenter.setBounds(279, 396, 230, 78);
+		btnToSupportcenter.setBounds(271, 382, 251, 46);
 		frame.getContentPane().add(btnToSupportcenter);
 		
 		
@@ -173,6 +173,31 @@ public class NetIDResetWindow {
 		btnToMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		btnToMainMenu.setBounds(546, 396, 230, 78);
 		frame.getContentPane().add(btnToMainMenu);
+		
+		JButton btnToSecurityunredu = new JButton("To security.unr.edu");
+		btnToSecurityunredu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+				if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+					URI eduWebsiteLink = null;
+					try {
+						eduWebsiteLink = new URI("https://security.unr.edu/");
+					}
+					catch(URISyntaxException e1) {
+						e1.printStackTrace();
+					}
+					try {
+						desktop.browse(eduWebsiteLink);
+					}
+					catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				}
+			}
+		});
+		btnToSecurityunredu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		btnToSecurityunredu.setBounds(271, 439, 251, 50);
+		frame.getContentPane().add(btnToSecurityunredu);
 		
 	}
 }

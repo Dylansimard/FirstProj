@@ -54,6 +54,7 @@ public class MainWindow {
 		
 		//the text area that the user will type into
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textArea.setRows(100);
 		textArea.setColumns(100);
 		
@@ -110,7 +111,7 @@ public class MainWindow {
 				input = textArea.getText();
 				if(!input.isEmpty()) {
 					frame.dispose();
-					ContinueLinkingPage redirect = new ContinueLinkingPage(input);
+					ContinuePage redirect = new ContinuePage(input);
 				}
 			}
 		});
