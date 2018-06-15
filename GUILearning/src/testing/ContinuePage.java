@@ -31,6 +31,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import java.awt.event.MouseAdapter;
 import java.awt.SystemColor;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class ContinuePage {
 		
@@ -93,6 +95,18 @@ public class ContinuePage {
 		comboBox.setBounds(740, 129, 225, 33);
 		frame.getContentPane().add(comboBox);
 		
+		JButton btnToNextWord = new JButton("To Selected Word");
+		btnToNextWord.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				printScreen(matchedWords, comboBox.getSelectedIndex());
+			}
+		});
+		btnToNextWord.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnToNextWord.setBounds(740, 32, 225, 42);
+		frame.getContentPane().add(btnToNextWord);
+		
+		
+		
 		for(int i = 0; i < matchedWords.length; ++i) {
 			comboBox.addItem(matchedWords[i]);
 		}
@@ -102,12 +116,12 @@ public class ContinuePage {
 		
 		JLabel lblNewLabel = new JLabel("Next keyWords");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(797, 85, 117, 33);
+		lblNewLabel.setBounds(800, 85, 117, 33);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Original inputted statement:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(10, 11, 1036, 42);
+		lblNewLabel_1.setBounds(10, 11, 710, 42);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JTextPane textPaneInput = new JTextPane();
@@ -183,6 +197,8 @@ public class ContinuePage {
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		label_9.setBounds(20, 554, 710, 27);
 		frame.getContentPane().add(label_9);
+		
+
 		
 
 		
@@ -269,6 +285,7 @@ public class ContinuePage {
 		if(array[numWord].equalsIgnoreCase("email") || array[numWord].equalsIgnoreCase("outlook") || 
 				array[numWord].equalsIgnoreCase("mail") || array[numWord].equalsIgnoreCase("emails")
 				|| array[numWord].equalsIgnoreCase("message") || array[numWord].equalsIgnoreCase("messages")) {
+			
 			
 			label.setText("Email General info");
 			label.addMouseListener(new MouseAdapter() {
@@ -521,11 +538,14 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("printer") || array[numWord].equalsIgnoreCase("printing")
 				|| array[numWord].equalsIgnoreCase("print") || array[numWord].equalsIgnoreCase("prints")
 				|| array[numWord].equalsIgnoreCase("copystar")) {
+			
 			
 			label.setText("General Printing Inforamtion");
 			label.addMouseListener(new MouseAdapter() {
@@ -751,6 +771,9 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("refurbished") || array[numWord].equalsIgnoreCase("surplus")
@@ -760,6 +783,7 @@ public class ContinuePage {
 				|| array[numWord].equalsIgnoreCase("buy") || array[numWord].equalsIgnoreCase("refurb")
 				|| array[numWord].equalsIgnoreCase("backup") || array[numWord].equalsIgnoreCase("back")
 				|| array[numWord].equalsIgnoreCase("up")) {
+			
 			
 			label.setText("New Computer Purchasing");
 			label.addMouseListener(new MouseAdapter() {
@@ -960,6 +984,11 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_7.setText("");
+			label_8.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 	
 		if(array[numWord].equalsIgnoreCase("phone") || array[numWord].equalsIgnoreCase("telephone")
@@ -967,6 +996,7 @@ public class ContinuePage {
 				|| array[numWord].equalsIgnoreCase("calling") || array[numWord].equalsIgnoreCase("voicemail")
 				|| array[numWord].equalsIgnoreCase("conference") || array[numWord].equalsIgnoreCase("voice")
 				|| array[numWord].equalsIgnoreCase("calls")) {
+			
 			
 			label.setText("General Phone Information");
 			label.addMouseListener(new MouseAdapter() {
@@ -1142,12 +1172,18 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("website") || array[numWord].equalsIgnoreCase("wolfweb")
 				|| array[numWord].equalsIgnoreCase("wolf") || array[numWord].equalsIgnoreCase("web")
 				|| array[numWord].equalsIgnoreCase("filezilla") || array[numWord].equalsIgnoreCase("dreamweaver")
 				|| array[numWord].equalsIgnoreCase("site")) {
+			
 			
 			label.setText("General Website information");
 			label.addMouseListener(new MouseAdapter() {
@@ -1298,6 +1334,12 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("nevadabox") || array[numWord].equalsIgnoreCase("box")
@@ -1452,6 +1494,12 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("office") || array[numWord].equalsIgnoreCase("office365")
@@ -1532,6 +1580,15 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_2.setText("");
+			label_3.setText("");
+			label_4.setText("");
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("sharepoint") || array[numWord].equalsIgnoreCase("share")
@@ -1711,6 +1768,11 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("nas") || array[numWord].equalsIgnoreCase("network data storage")
@@ -1866,6 +1928,13 @@ public class ContinuePage {
 					}
 				}
 			});
+			
+			label_4.setText("");
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("wifi") || array[numWord].equalsIgnoreCase("network")
@@ -2384,17 +2453,350 @@ public class ContinuePage {
 			});
 			
 			
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
+			
+			
 		
 		}
 		if(array[numWord].equalsIgnoreCase("netid") || array[numWord].equalsIgnoreCase("net")
 				|| array[numWord].equalsIgnoreCase("id") || array[numWord].equalsIgnoreCase("activate")
 				|| array[numWord].equalsIgnoreCase("activation") || array[numWord].equalsIgnoreCase("forgot")) {
 			
+			label.setText("NetID General Information");
+			label.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_0.setText("NetID Activation Information");
+			label_0.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/netid-activation/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_1.setText("NetID Password Expiration Information");
+			label_1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/netid-password-expiration/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_2.setText("NetID Password Reset Information");
+			label_2.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/netid-password-reset/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_3.setText("NetID Login Issues FAQ");
+			label_3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/netid-faq/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_4.setText("Guest NetID Information");
+			label_4.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/netid/guest-netid/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 		}
 		
 		if(array[numWord].equalsIgnoreCase("nshe") || array[numWord].equalsIgnoreCase("id")
 				|| array[numWord].equalsIgnoreCase("activate") || array[numWord].equalsIgnoreCase("activation")
 				|| array[numWord].equalsIgnoreCase("number") || array[numWord].equalsIgnoreCase("forgot")) {
+			
+			label.setText("NSHE ID General Information");
+			label.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/nshe-id/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_0.setText("Forgot NSHE ID Number");
+			label_0.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/nshe-id/forgot-your-nshe-id-number/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_1.setText("Forgot NSHE ID Password");
+			label_1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://oit.unr.edu/services-and-support/login-ids-and-passwords/nshe-id/forgot-your-nshe-id-password/");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_2.setText("");
+			label_3.setText("");
+			label_4.setText("");
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
+			
+		}
+		
+		if(array[numWord].equalsIgnoreCase("workday") || array[numWord].equalsIgnoreCase("work")
+				|| array[numWord].equalsIgnoreCase("day") || array[numWord].equalsIgnoreCase("myworkday")) {
+			
+			label.setText("Workday General Information");
+			label.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://www.unr.edu/workday");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_0.setText("Workday Training Information and Resources");
+			label_0.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("https://www.unr.edu/workday/workday-training-and-resources");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_1.setText("Accessing Workday (and FAQ at bottom of page)");
+			label_1.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+					
+					if(desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+						
+						URI supportCenterLink = null;
+						try {
+							supportCenterLink = new URI("hhttps://www.unr.edu/workday/accessing-workday");
+						} catch (URISyntaxException e1) {
+							e1.printStackTrace();
+						}
+						
+						try {
+							desktop.browse(supportCenterLink);
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			label_2.setText("");
+			label_3.setText("");
+			label_4.setText("");
+			label_5.setText("");
+			label_6.setText("");
+			label_7.setText("");
+			label_8.setText("");
+			label_9.setText("");
 			
 		}
 		

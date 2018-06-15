@@ -77,10 +77,15 @@ direct
 remote access
 vpn
 netid
-net id
+net
+id
 activate
 activation
 nshe id
 nshe
 number
 forgot
+workday
+work
+day
+myworkday
