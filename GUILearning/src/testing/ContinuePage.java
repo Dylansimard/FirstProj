@@ -213,7 +213,7 @@ public class ContinuePage {
 		//declaration for opening the file, verifies it is found
 		FileReader file = null;
 		try {
-			file = new FileReader("testing/keyWord.txt");
+			file = new FileReader("lib/keyWord.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} 
@@ -232,7 +232,7 @@ public class ContinuePage {
 		//re-open the file to get the scanner to start from the top
 		FileReader file2 = null;
 		try {
-			file2 = new FileReader("src/testing/keyWord.txt");
+			file2 = new FileReader("lib/keyWord.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} 
