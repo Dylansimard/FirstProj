@@ -213,7 +213,7 @@ public class ContinuePage {
 		//declaration for opening the file, verifies it is found
 		FileReader file = null;
 		try {
-			file = new FileReader("lib/keyWord.txt");
+			file = new FileReader("testing/keyWord.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} 
@@ -232,7 +232,7 @@ public class ContinuePage {
 		//re-open the file to get the scanner to start from the top
 		FileReader file2 = null;
 		try {
-			file2 = new FileReader("lib/keyWord.txt");
+			file2 = new FileReader("src/testing/keyWord.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} 
@@ -1943,7 +1943,7 @@ public class ContinuePage {
 				|| array[numWord].equalsIgnoreCase("eduroam") || array[numWord].equalsIgnoreCase("guest")
 				|| array[numWord].equalsIgnoreCase("register") || array[numWord].equalsIgnoreCase("device")
 				|| array[numWord].equalsIgnoreCase("registering") || array[numWord].equalsIgnoreCase("xbox")
-				|| array[numWord].equalsIgnoreCase("playstation")) {
+				|| array[numWord].equalsIgnoreCase("playstation") || array[numWord].equalsIgnoreCase("ps4")) {
 			
 			label.setText("Network and Internet General Information");
 			label.addMouseListener(new MouseAdapter() {
