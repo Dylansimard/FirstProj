@@ -9,16 +9,19 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class MainWindow {
 
-	
+	private int counter = 0;
 	JFrame frame;
 	private String input;
 	
@@ -54,6 +57,31 @@ public class MainWindow {
 		
 		//the text area that the user will type into
 		JTextArea textArea = new JTextArea();
+		textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if(counter == 0) {
+					++counter;
+					textArea.setText("");
+				}
+			}
+		});
+		
+		textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					input = textArea.getText();
+					if(!input.isEmpty() && !input.equalsIgnoreCase("please use no punctuation")) {
+						frame.dispose();
+						ContinuePage redirect = new ContinuePage(input);
+					}
+				}
+			}
+		});
+		
+		textArea.setText("Please use no punctuation");
+		
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		textArea.setRows(100);
 		textArea.setColumns(100);
@@ -109,7 +137,7 @@ public class MainWindow {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				input = textArea.getText();
-				if(!input.isEmpty()) {
+				if(!input.isEmpty() && !input.equalsIgnoreCase("please use no punctuation")) {
 					frame.dispose();
 					ContinuePage redirect = new ContinuePage(input);
 				}
