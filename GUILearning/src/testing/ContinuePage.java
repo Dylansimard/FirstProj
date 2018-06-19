@@ -21,6 +21,7 @@ import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
@@ -237,12 +238,7 @@ public class ContinuePage {
 	void setKeyWords() {
 		
 		//declaration for opening the file, verifies it is found
-		FileReader file = null;
-		try {
-			file = new FileReader("lib/keyWord.txt");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} 
+		InputStream file = this.getClass().getResourceAsStream("keyWord.txt");
 		
 		//counter for the total keyWords
 		int counter = 0;
@@ -256,12 +252,7 @@ public class ContinuePage {
 		sc.close();
 		
 		//re-open the file to get the scanner to start from the top
-		FileReader file2 = null;
-		try {
-			file2 = new FileReader("lib/keyWord.txt");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} 
+		InputStream file2 = this.getClass().getResourceAsStream("keyWord.txt");
 		
 		//another scanner to start at the top of the file
 		Scanner sc2 = new Scanner(file2);
