@@ -98,7 +98,14 @@ public class ContinuePage {
 		JButton btnToNextWord = new JButton("To Selected Word");
 		btnToNextWord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				printScreen(matchedWords, comboBox.getSelectedIndex());
+				if(matchedWords.length == 0) {
+					String input[] = new String[1];
+					input[0] = comboBox.getItemAt(comboBox.getSelectedIndex());
+					printScreen(input, 0);
+				}
+				else {
+					printScreen(matchedWords, comboBox.getSelectedIndex());
+				}
 			}
 		});
 		btnToNextWord.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -112,6 +119,25 @@ public class ContinuePage {
 		}
 		if(matchedWords.length != 0) {
 			printScreen(matchedWords, 0);
+		}
+		else {
+			label.setText("I'm sorry, none of those words matched, check the drop box for options");
+			comboBox.addItem("outlook");
+			comboBox.addItem("printing");
+			comboBox.addItem("purchasing");
+			comboBox.addItem("phone");
+			comboBox.addItem("website");
+			comboBox.addItem("nevadabox");
+			comboBox.addItem("office365");
+			comboBox.addItem("sharepoint");
+			comboBox.addItem("nas");
+			comboBox.addItem("network data storage");
+			comboBox.addItem("wifi");
+			comboBox.addItem("registering device");
+			comboBox.addItem("remote services");
+			comboBox.addItem("NetID");
+			comboBox.addItem("NSHE id");
+			
 		}
 		
 		JLabel lblNewLabel = new JLabel("Next keyWords");
@@ -1943,7 +1969,8 @@ public class ContinuePage {
 				|| array[numWord].equalsIgnoreCase("eduroam") || array[numWord].equalsIgnoreCase("guest")
 				|| array[numWord].equalsIgnoreCase("register") || array[numWord].equalsIgnoreCase("device")
 				|| array[numWord].equalsIgnoreCase("registering") || array[numWord].equalsIgnoreCase("xbox")
-				|| array[numWord].equalsIgnoreCase("playstation") || array[numWord].equalsIgnoreCase("ps4")) {
+				|| array[numWord].equalsIgnoreCase("playstation") || array[numWord].equalsIgnoreCase("ps4")
+				|| array[numWord].equalsIgnoreCase("registering device")) {
 			
 			label.setText("Network and Internet General Information");
 			label.addMouseListener(new MouseAdapter() {
@@ -2223,7 +2250,7 @@ public class ContinuePage {
 		if(array[numWord].equalsIgnoreCase("remote") || array[numWord].equalsIgnoreCase("desktop")
 				|| array[numWord].equalsIgnoreCase("services") || array[numWord].equalsIgnoreCase("direct")
 				|| array[numWord].equalsIgnoreCase("vpn") || array[numWord].equalsIgnoreCase("access")
-				|| array[numWord].equalsIgnoreCase("remote.unr.edu")) {
+				|| array[numWord].equalsIgnoreCase("remote.unr.edu") || array[numWord].equalsIgnoreCase("remote services")) {
 			
 			label.setText("Remote Access General");
 			label.addMouseListener(new MouseAdapter() {
@@ -2623,7 +2650,8 @@ public class ContinuePage {
 		
 		if(array[numWord].equalsIgnoreCase("nshe") || array[numWord].equalsIgnoreCase("id")
 				|| array[numWord].equalsIgnoreCase("activate") || array[numWord].equalsIgnoreCase("activation")
-				|| array[numWord].equalsIgnoreCase("number") || array[numWord].equalsIgnoreCase("forgot")) {
+				|| array[numWord].equalsIgnoreCase("number") || array[numWord].equalsIgnoreCase("forgot")
+				|| array[numWord].equalsIgnoreCase("nshe id")) {
 			
 			label.setText("NSHE ID General Information");
 			label.addMouseListener(new MouseAdapter() {
